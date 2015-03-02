@@ -56,3 +56,5 @@ target/
 node_modules/
 habs_portal/static/lib/
 *.swp
+habs_portal/static/css/compiled/
+habs_portal/static/js/compiled/

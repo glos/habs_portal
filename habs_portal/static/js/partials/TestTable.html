@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>
+        Message
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% collection.each(function(model) { %>
+    <tr>
+      <td> <%= model.get('message') %> </td>
+    </tr>
+  <% }); %>
+  </tbody>
+</table>

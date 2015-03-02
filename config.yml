@@ -1,0 +1,9 @@
+COMMON: &common
+    LOGGING: True
+    LOG_FILE_PTAH: 'logs/'
+    LOG_FILE: 'habs_portal.log'
+    SECRET_KEY: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    HOST: localhost
+    PORT: 3000
+    JSONIFY_PRETTYPRINT_REGULAR: true
+    DEBUG: True
