@@ -8,3 +8,8 @@ def show_index():
 @api.route('/test/')
 def show_test():
     return render_template('test.html')
+
+@api.route('/map', methods=['GET'])
+@api.route('/map/', methods=['GET'])
+def show_map():
+    return render_template('map.html')
