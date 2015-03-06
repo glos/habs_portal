@@ -33,11 +33,22 @@ module.exports = function(grunt) {
             // Views
             'habs_portal/static/js/views/TestTableView.js'
           ],
+          'habs_portal/static/js/compiled/map.js' : [
+            // Libs
+            'habs_portal/static/lib/jquery/dist/jquery.js',
+            'habs_portal/static/lib/jquery-ui/jquery-ui.js',
+            'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
+            'habs_portal/static/lib/underscore/underscore.js',
+            'habs_portal/static/lib/backbone/backbone.js',
+          ],
         }
       },
       css: {
         files: {
           'habs_portal/static/css/compiled/test.css' : [
+          ],
+          'habs_portal/static/css/compiled/map.css' : [
+            'habs_portal/static/css/common.css'
           ],
         }
       }
