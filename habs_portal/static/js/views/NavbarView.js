@@ -6,7 +6,12 @@
  *  - habs_portal/static/js/partials/Navbar.html
  */
 var NavbarView = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
+    if (options && options.mode) {
+      this.mode = options.mode
+    } else {
+      this.mode = null; // better than an udefined, don't you think?
+    }
     console.log("Navbar View initialized");
     this.initialRender();
   },
@@ -16,5 +21,10 @@ var NavbarView = Backbone.View.extend({
   template: JST['habs_portal/static/js/partials/Navbar.html'],
   render: function() {
     this.$el.html(this.template());
+
+    // highlight the mode
+    this.$el.find('#' + this.mode)
+      .append('<span class="sr-only">(current)</span>')
+      .parent().toggleClass('active');
   }
 });

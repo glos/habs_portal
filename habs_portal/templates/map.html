@@ -60,7 +60,8 @@ _.extend(App.prototype, Backbone.Events, {
       el: $('#banner')
     }).render();
     this.views.navbarView = new NavbarView({
-      el: $('#navbar')
+      el: $('#navbar'),
+      mode: 'map'
     }).render();
     // this.views.mapView = new MapView();
     // this.views.tocView = new TOCView();
@@ -75,8 +76,6 @@ $(document).ready(function() {
   app.start();
 });
 
-$(document).ready(function() {
-});
 </script>
 {% endblock %}
 
