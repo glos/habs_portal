@@ -7,6 +7,10 @@ module.exports = function(grunt) {
         files: {
           "habs_portal/static/js/partials/compiled/test.js" : [
             "habs_portal/static/js/partials/TestTable.html"
+          ],
+          "habs_portal/static/js/partials/compiled/map.js" : [
+            "habs_portal/static/js/partials/Banner.html",
+            "habs_portal/static/js/partials/Navbar.html"
           ]
         }
       }
@@ -40,6 +44,11 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
+            // Models
+            'habs_portal/static/js/models/StationModel.js',
+            // Views
+            'habs_portal/static/js/views/BannerView.js',
+            'habs_portal/static/js/views/NavbarView.js'
           ],
         }
       },
