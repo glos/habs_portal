@@ -1,0 +1,16 @@
+{
+  "categories" : [
+    {
+      "id": "temperature",
+      "name":"Temperature"
+    },
+    {
+      "id" : "nutrients",
+      "name" : "Nutrients"
+    },
+    {
+      "id":"Currents",
+      "name":"Currents"
+    }
+  ]
+}

@@ -63,13 +63,22 @@ _.extend(App.prototype, Backbone.Events, {
       el: $('#navbar'),
       mode: 'map'
     }).render();
-    this.views.mapView = new MapView({
+    this.views.mapView = new StationMapView({
       el: $('#map-view'),
       center: [44.71, -83.15],
       zoom: 7
     }).render();
     // this.views.mapView = new MapView();
     // this.views.tocView = new TOCView();
+
+    this.views.mapView.drawCircle({
+        lat: 45.31,
+        lon: -85.64,
+        color: '#A1865B',
+        fillColor: '#EED8B6',
+        radius: 10
+    });
+
 
     /* Fetching */
     this.collections.stations.fetch({reset: true});
