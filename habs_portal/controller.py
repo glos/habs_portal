@@ -1,9 +1,9 @@
 from habs_portal import habs_portal as api
-from flask import render_template
+from flask import render_template, redirect, url_for
 
 @api.route('/')
 def show_index():
-    return render_template('index.html')
+    return redirect(url_for('.show_map'))
 
 @api.route('/test/')
 def show_test():

@@ -26,7 +26,7 @@
   <div id="sidebar-wrapper">
   </div>
   <div id="page-content-wrapper">
-    <div id="map">
+    <div id="map-view">
     </div> <!-- #map -->
   </div> <!-- #page-content-wrapper -->
 </div> <!-- #wrapper -->
@@ -62,6 +62,11 @@ _.extend(App.prototype, Backbone.Events, {
     this.views.navbarView = new NavbarView({
       el: $('#navbar'),
       mode: 'map'
+    }).render();
+    this.views.mapView = new MapView({
+      el: $('#map-view'),
+      center: [44.71, -83.15],
+      zoom: 7
     }).render();
     // this.views.mapView = new MapView();
     // this.views.tocView = new TOCView();

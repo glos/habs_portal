@@ -5,7 +5,7 @@ app.py
 HABS Data Portal Application
 '''
 
-from flask import Flask
+from flask import Flask, jsonify, url_for
 from flask_environments import Environments
 
 import os
@@ -36,9 +36,36 @@ if app.config['LOGGING'] == True:
     app.logger.info('Application Process Started')
 
 
+def has_no_empty_params(rule):
+    '''
+    Something to do with empty params?
+    '''
+    defaults = rule.defaults if rule.defaults is not None else ()
+    arguments = rule.arguments if rule.arguments is not None else ()
+    return len(defaults) >= len(arguments)
+
+#route("/site-map")
+def site_map():
+    '''
+    Returns a json structure for the site routes and handlers
+    '''
+    links = []
+    for rule in app.url_map.iter_rules():
+        # Filter out rules we can't navigate to in a browser
+        # and rules that require parameters
+        if "GET" in rule.methods and has_no_empty_params(rule):
+            url = url_for(rule.endpoint)
+            links.append((url, rule.endpoint))
+    # links is now a list of url, endpoint tuples
+    return jsonify(rules=links)
+
+
 # Blueprints
 from habs_portal import habs_portal
 app.register_blueprint(habs_portal, url_prefix='')
+
+if app.config['DEBUG']:
+    app.add_url_rule('/site-map', 'site_map', site_map)
 
 if __name__ == '__main__':
     app.run(host=app.config['HOST'], port=app.config['PORT'], debug=app.config['DEBUG'])
