@@ -63,7 +63,9 @@ def site_map():
 # Blueprints
 from habs_portal import habs_portal
 app.register_blueprint(habs_portal, url_prefix='')
-app.add_url_rule('/site-map', 'site_map', site_map)
+
+if app.config['DEBUG']:
+    app.add_url_rule('/site-map', 'site_map', site_map)
 
 if __name__ == '__main__':
     app.run(host=app.config['HOST'], port=app.config['PORT'], debug=app.config['DEBUG'])

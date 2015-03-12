@@ -3,7 +3,6 @@ from flask import render_template, redirect, url_for
 
 @api.route('/')
 def show_index():
-    print url_for('.show_map')
     return redirect(url_for('.show_map'))
 
 @api.route('/test/')
