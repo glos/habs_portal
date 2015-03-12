@@ -137,6 +137,9 @@ var MapView = Backbone.View.extend({
     _.extend(opts, options);
     console.log("circleMarker");
     var circle = L.circleMarker([lat, lon], opts);
+    circle.on('click', function(event) {
+      console.log("Click");
+    });
     circle.addTo(this.map);
   },
   redraw: function() {
