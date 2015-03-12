@@ -65,18 +65,20 @@ _.extend(App.prototype, Backbone.Events, {
     }).render();
     this.views.mapView = new StationMapView({
       el: $('#map-view'),
+      collection: this.collections.activeStations,
       center: [44.71, -83.15],
       zoom: 7
     }).render();
     // this.views.mapView = new MapView();
     // this.views.tocView = new TOCView();
 
-    this.views.mapView.drawCircle({
-        lat: 45.31,
-        lon: -85.64,
-        color: '#A1865B',
-        fillColor: '#EED8B6',
-        radius: 10
+    this.listenTo(this.collections.stations, 'reset', function(collection) {
+      var models = collection.models;
+      self.collections.activeStations.reset(models);
+    });
+
+    this.listenTo(this.collections.activeStations, 'reset', function(collection) {
+      self.views.mapView.drawStations();
     });
 
 

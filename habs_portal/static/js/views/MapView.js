@@ -146,4 +146,17 @@ var MapView = Backbone.View.extend({
 });
 
 var StationMapView = MapView.extend({
+  drawStations: function() {
+    var self = this;
+    console.log("Drawing stations");
+    this.collection.each(function(model) {
+      self.drawCircle({
+        lat: model.get('lat'),
+        lon: model.get('lon'),
+        color: '#A1865B',
+        fillColor: '#EED8B6',
+        radius: 10
+      });
+    });
+  }
 });
