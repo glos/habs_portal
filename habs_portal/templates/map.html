@@ -82,6 +82,16 @@ _.extend(App.prototype, Backbone.Events, {
       self.views.mapView.drawStations();
     });
 
+    this.listenTo(this.views.mapView, 'stationClick', function(feature) {
+      console.log("I clicked a feature");
+      console.log(feature.circle);
+      this.views.mapView.selectStation(feature.model);
+    });
+
+    this.listenTo(this.views.mapView, 'mapClick', function() {
+      this.views.mapView.clearSelection();
+    });
+
 
     /* Fetching */
     this.collections.stations.fetch({reset: true});
