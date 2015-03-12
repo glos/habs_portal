@@ -48,6 +48,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/models/StationModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
+            'habs_portal/static/js/views/MapView.js',
             'habs_portal/static/js/views/NavbarView.js'
           ],
         }
