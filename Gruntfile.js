@@ -46,6 +46,7 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/backbone/backbone.js',
             // Models
             'habs_portal/static/js/models/StationModel.js',
+            'habs_portal/static/js/models/CategoryModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/MapView.js',

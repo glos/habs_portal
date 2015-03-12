@@ -4,18 +4,22 @@
  */
 
 var StationModel = Backbone.Model.extend({
-  urlRoot: '/api/test',
+  urlRoot: '/json/stations.json',
   defaults: {
-    message: ""
+    categories: [],
+    name: "",
+    lat: null,
+    lon: null,
+    institution: ""
   }
 });
 
 var StationCollection = Backbone.Collection.extend({
-  url: '/api/test',
+  url: '/json/stations.json',
   model: StationModel,
   parse: function(response) {
-    if(response && response.messages) {
-      return response.messages;
+    if(response && response.stations) {
+      return response.stations;
     }
     return [];
   }
