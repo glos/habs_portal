@@ -10,7 +10,6 @@
 var MapView = Backbone.View.extend({
     initialize: function(options) {
     var self = this;
-    console.log("Map Initialized");
     _.bindAll(this, "onEachFeature", "highlight_layer", "reset_highlight");
     var center = [41.505, -80.09];
     var zoom = 3;
@@ -33,13 +32,16 @@ var MapView = Backbone.View.extend({
     }
 
     this.map = L.map(this.el,{
-           center: center,
-           zoom: zoom,
-           maxZoom: maxZoom
-       });
+       center: center,
+       zoom: zoom,
+       maxZoom: maxZoom
+     });
     this.render();
+    this.map.on('click', function(event) {
+      self.trigger('mapClick', self);
+    });
     return this
-    },
+  },
   addTrajectory: function(feature) {
     L.geoJson(feature, {
         style: this.featureStyle,
@@ -135,15 +137,94 @@ var MapView = Backbone.View.extend({
       fillOpacity: 0.5
     }
     _.extend(opts, options);
-    console.log("circleMarker");
+
     var circle = L.circleMarker([lat, lon], opts);
     circle.addTo(this.map);
+    return circle;
   },
   redraw: function() {
-    console.log("Redraw");
     this.map.invalidateSize();
   }
 });
 
 var StationMapView = MapView.extend({
+  /*
+   * Add a station model to the map by creating a circle for it. Also add it to
+   * a list of features so we can bind to it and play with the events.
+   */
+  addStation: function(model, options) {
+    var self = this;
+    var opts = {
+      lat: model.get('lat'),
+      lon: model.get('lon'),
+      color: '#A1865B',
+      fillColor: '#EED8B6',
+      selected: false,
+      radius: 10
+    };
+    _.extend(opts, options);
+
+    var feature = {
+      id: model.get('id'),
+      model: model,
+      selected: opts.selected,
+      popupView: null,
+      circle: this.drawCircle(opts)
+    };
+    this.stations.push(feature);
+    feature.circle.on('click', function(event) {
+      self.trigger('stationClick', feature);
+    });
+    if(opts.selected) {
+      var view = new PopupView({
+        model: feature.model
+      });
+      view.render();
+      this.showPopup(model, view);
+    }
+  },
+  showPopup: function(model, view) {
+    var feature = _.find(this.stations, function(station) {
+      return station.id == model.id
+    });
+    feature.popupView = view;
+    feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
+  },
+  selectStation: function(model) {
+    var feature = _.find(this.stations, function(station) {
+      return station.id == model.id
+    });
+
+    if(feature) {
+      this.map.removeLayer(feature.circle);
+      this.stations.pop(feature);
+    }
+
+    this.addStation(model, {
+      color: '#F26D64',
+      fillColor: '#AD4E47',
+      selected: true
+    });
+  },
+  clearSelection: function() {
+    var self = this;
+    var selectedFeatures = _.where(this.stations, {selected: true});
+    _.each(selectedFeatures, function(feature) {
+      self.map.removeLayer(feature.circle);
+      self.stations.pop(feature);
+
+      self.addStation(feature.model);
+    });
+  },
+  drawStations: function() {
+    var self = this;
+    this.collection.each(function(model) {
+      self.addStation(model);
+    });
+  },
+  initialize: function() {
+    MapView.prototype.initialize.apply(this, arguments);
+  },
+  stations: []
 });
+

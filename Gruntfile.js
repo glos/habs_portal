@@ -10,7 +10,8 @@ module.exports = function(grunt) {
           ],
           "habs_portal/static/js/partials/compiled/map.js" : [
             "habs_portal/static/js/partials/Banner.html",
-            "habs_portal/static/js/partials/Navbar.html"
+            "habs_portal/static/js/partials/Navbar.html",
+            "habs_portal/static/js/partials/Popup.html"
           ]
         }
       }
@@ -28,7 +29,7 @@ module.exports = function(grunt) {
           'habs_portal/static/js/compiled/test.js' : [
             // Libs
             'habs_portal/static/lib/jquery/dist/jquery.js',
-            'habs_portal/static/lib/jquery-ui/jquery-ui.js',
+            //'habs_portal/static/lib/jquery-ui/jquery-ui.js',
             'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
@@ -40,8 +41,8 @@ module.exports = function(grunt) {
           'habs_portal/static/js/compiled/map.js' : [
             // Libs
             'habs_portal/static/lib/jquery/dist/jquery.js',
-            'habs_portal/static/lib/jquery-ui/jquery-ui.js',
-            'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
+            //'habs_portal/static/lib/jquery-ui/jquery-ui.js',
+            'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
             // Models
@@ -50,6 +51,7 @@ module.exports = function(grunt) {
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/MapView.js',
+            'habs_portal/static/js/views/PopupView.js',
             'habs_portal/static/js/views/NavbarView.js'
           ],
         }
@@ -59,7 +61,8 @@ module.exports = function(grunt) {
           'habs_portal/static/css/compiled/test.css' : [
           ],
           'habs_portal/static/css/compiled/map.css' : [
-            'habs_portal/static/css/common.css'
+            'habs_portal/static/css/common.css',
+            'habs_portal/static/css/popup.css'
           ],
         }
       }
