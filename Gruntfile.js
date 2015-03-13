@@ -50,9 +50,11 @@ module.exports = function(grunt) {
             // Models
             'habs_portal/static/js/models/StationModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
+            'habs_portal/static/js/models/InstitutionModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/MapView.js',
+            'habs_portal/static/js/views/StationMapView.js',
             'habs_portal/static/js/views/NavbarView.js',
             'habs_portal/static/js/views/TOCView.js',
             'habs_portal/static/js/views/CategoryItemView.js',
@@ -67,6 +69,7 @@ module.exports = function(grunt) {
           ],
           'habs_portal/static/css/compiled/map.css' : [
             'habs_portal/static/css/common.css',
+            'habs_portal/static/css/toc.css',
             'habs_portal/static/css/popup.css'
           ],
         }

@@ -5,7 +5,7 @@
 {% block head %}
 <!-- Unfortunately leaflet and Grunt don't get along -->
 <link href="/lib/leaflet/dist/leaflet.css" rel="stylesheet" type="text/css">
-<script src="/lib/leaflet/dist/leaflet.js" type="text/javascript"></script>
+<script src="/lib/leaflet/dist/leaflet-src.js" type="text/javascript"></script>
 
 <!-- Partials -->
 <script src="/js/partials/compiled/map.js" type="text/javascript"></script>
@@ -55,9 +55,9 @@ _.extend(App.prototype, Backbone.Events, {
 
     /* Collections */
     this.collections.categories = new CategoryCollection();
+    this.collections.institutions = new InstitutionCollection();
     this.collections.stations = new StationCollection();
     this.collections.activeStations = new StationCollection();
-    this.collections.categories = new CategoryCollection();
 
     /* Views */
     this.views.bannerView = new BannerView({
@@ -72,8 +72,9 @@ _.extend(App.prototype, Backbone.Events, {
     this.views.mapView = new StationMapView({
       el: $('#map-view'),
       collection: this.collections.activeStations,
-      center: [44.71, -83.15],
-      zoom: 7
+      institutions: this.collections.institutions, // For Icons
+      center: [41.63, -82.61],
+      zoom: 10
     }).render();
 
     this.views.tocView = new TOCView({
@@ -88,6 +89,11 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       var models = collection.models;
       self.collections.activeStations.reset(models);
+    });
+
+    /* stationItemView:onStationSelect */
+    this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
+      this.views.mapView.selectStation(model);
     });
 
     /* activeStations:reset */
@@ -113,6 +119,7 @@ _.extend(App.prototype, Backbone.Events, {
     /* Fetching */
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
+    this.collections.institutions.fetch({reset: true});
   }
 });
 
