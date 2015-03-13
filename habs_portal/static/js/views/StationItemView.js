@@ -1,5 +1,5 @@
 var StationItemView = Backbone.View.extend({
-  tagName: "li",
+  tagName: 'p',
 
   template: JST['habs_portal/static/js/partials/StationItem.html'],
 
@@ -10,7 +10,6 @@ var StationItemView = Backbone.View.extend({
   onStationSelect: function(e) {
     console.log('onStationSelect: ' + this.model.get('id'));
     e.preventDefault();
-    e.stopPropagation();
   },
 
   events: {

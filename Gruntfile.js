@@ -43,8 +43,7 @@ module.exports = function(grunt) {
           'habs_portal/static/js/compiled/map.js' : [
             // Libs
             'habs_portal/static/lib/jquery/dist/jquery.js',
-            'habs_portal/static/lib/jquery-ui/jquery-ui.js',
-            'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
+            'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
             // Models

@@ -1,11 +1,11 @@
 var CategoryItemView = Backbone.View.extend({
-  tagName: "li",
+  className: "panel panel-default",
   subviews: [],
  
   add: function(subview) {
     subview.render();
     this.subviews.push(subview);
-    this.$el.find('ul').append(subview.el);
+    this.$el.find('.panel-body').append(subview.el);
   },
 
   template: JST['habs_portal/static/js/partials/CategoryItem.html'],
@@ -23,11 +23,9 @@ var CategoryItemView = Backbone.View.extend({
 
   onCategorySelect: function(e) {
     console.log('onCategorySelect: ' + this.model.get('name'));
-    e.preventDefault();
-    e.stopPropagation();
   },
 
   events: {
-    'click a' : 'onCategorySelect' 
+    'click h4' : 'onCategorySelect' 
   }
 });

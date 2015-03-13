@@ -37,7 +37,7 @@ var TOCView = Backbone.View.extend({
   add: function(subview) {
     subview.render();
     this.subviews.push(subview);
-    this.$el.find('ul').first().append(subview.el);
+    this.$el.find('.panel-group').append(subview.el);
   },
 
   render: function() {
