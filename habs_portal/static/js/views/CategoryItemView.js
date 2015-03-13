@@ -21,13 +21,13 @@ var CategoryItemView = Backbone.View.extend({
     });
   },
 
-  onClick: function(e) {
-    console.log('Category click: ' + this.model.get('name'));
+  onCategorySelect: function(e) {
+    console.log('onCategorySelect: ' + this.model.get('name'));
     e.preventDefault();
     e.stopPropagation();
   },
 
   events: {
-    'click a' : 'onClick' 
+    'click a' : 'onCategorySelect' 
   }
 });
