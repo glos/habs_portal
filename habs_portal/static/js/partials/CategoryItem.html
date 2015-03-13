@@ -3,6 +3,12 @@
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
       <%= model.get('name') %>
     </a>
+    &nbsp;
+    <% if(collectionLength>0) { %>
+    <span class="badge">
+      <%= collectionLength %>
+    </span>
+    <% } %>
     <div class="pull-right">
       <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
         <i class="fa fa-toggle-down"></i>

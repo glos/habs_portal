@@ -13,7 +13,7 @@ var CategoryItemView = Backbone.View.extend({
  
   render: function() {
     var self = this;
-    this.$el.html(this.template({model: this.model}));
+    this.$el.html(this.template({model: this.model, collectionLength: this.collection.length}));
     this.collection.each(function(model) {
       var subview = new StationItemView({
         model: model
