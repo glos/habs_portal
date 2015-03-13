@@ -1,6 +1,10 @@
 {
   "categories" : [
     {
+      "id": "stations",
+      "name":"Stations"
+    },
+    {
       "id": "temperature",
       "name":"Temperature"
     },
@@ -9,8 +13,28 @@
       "name" : "Nutrients"
     },
     {
-      "id":"Currents",
+      "id":"currents",
       "name":"Currents"
+    },
+    {
+      "id":"conductivity",
+      "name":"Conductivity"
+    },
+    {
+      "id":"turbidity",
+      "name":"Turbidity"
+    },
+    {
+      "id":"ph",
+      "name":"pH"
+    },
+    {
+      "id":"chlorophyll",
+      "name":"Chlorophyll"
+    },
+    {
+      "id":"phycocyanin",
+      "name":"Phycocyanin"
     }
   ]
 }

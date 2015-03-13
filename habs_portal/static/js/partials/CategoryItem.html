@@ -3,9 +3,16 @@
     <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
       <%= model.get('name') %>
     </a>
+    <div class="pull-right">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
+        <i class="fa fa-toggle-down"></i>
+      </a>
+    </div>
   </h4>
 </div>
 <div id="collapse<%= model.get('name') %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= model.get('name') %>">
   <div class="panel-body">
+    <ul class="station-list">
+    </ul>
   </div>
 </div>

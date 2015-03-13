@@ -4,7 +4,7 @@ var CategoryItemView = Backbone.View.extend({
   add: function(subview) {
     subview.render();
     this.subviews.push(subview);
-    this.$el.find('.panel-body').append(subview.el);
+    this.$el.find('.panel-body > ul').append(subview.el);
   },
   collapse: function() {
     this.$el.find('.collapse').collapse('toggle');

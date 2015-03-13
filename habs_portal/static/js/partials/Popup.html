@@ -1,13 +1,10 @@
-<h2><%= model.get('name') %></h2>
-<div class="row">
-  <div class="col-sm-6">
-    <%= model.get('institution') %>
+<h2>
+  <%= model.get('name') %>
+  <div class="pull-right institution">
+    <%= institution.get('name') %>
+    <img alt="<%= institution.get('name') %>" src="<%= institution.get('icon') %>"></img>
   </div>
-  <div class="col-sm-6">
-    Lat: <%= model.get('lat') %> 
-    <br>
-    Lon: <%= model.get('lon') %>
-  </div>
-</div>
+</h2>
+<hr class="fade-style">
 <div class="plot-example">
 </div>

@@ -5,6 +5,30 @@
   text-decoration: none;
 }
 
+.panel-title.category-title > a{ 
+  color: #393939;
+}
+
+.panel-title.category-title > .pull-right a{ 
+  color: #393939;
+}
+
 .panel-title.category-title > a:hover {
   color: #3288A3;
+}
+
+ul.station-list {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.station-list li a { 
+  text-decoration: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 475;
+  color: #3288A3;
+}
+.station-list li a:hover {
+  color: #1F5566;
 }

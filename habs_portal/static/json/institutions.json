@@ -1,0 +1,25 @@
+{
+  "institutions": [
+    {
+      "id":"uot",
+      "name" : "University of Toledo",
+      "icon" : "/img/institutions/uot.png"
+    },
+    {
+      "id":"noaa",
+      "name" : "NOAA GLERL",
+      "icon" : "/img/institutions/noaa.png"
+    },
+    {
+      "id":"bgsu",
+      "name" : "Bowling Green State University",
+      "icon" : "/img/institutions/bgsu.png"
+    },
+    {
+      "id":"osu",
+      "name" : "Ohio State University",
+      "icon" : "/img/institutions/osu.png"
+    }
+  ]
+}
+
