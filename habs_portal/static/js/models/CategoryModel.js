@@ -4,9 +4,9 @@
  */
 
 var CategoryModel = Backbone.Model.extend({
-  urlRoot: '/json/categories.json',
   defaults: {
-    message: ""
+    id: "",
+    name: ""
   }
 });
 
@@ -14,10 +14,9 @@ var CategoryCollection = Backbone.Collection.extend({
   url: '/json/categories.json',
   model: CategoryModel,
   parse: function(response) {
-    if(response && response.messages) {
-      return response.messages;
+    if(response && response.categories) {
+      return response.categories;
     }
     return [];
   }
 });
-

@@ -24,6 +24,8 @@
 </div>
 <div id="wrapper">
   <div id="sidebar-wrapper">
+    <div id="toc">
+    </div>
   </div>
   <div id="page-content-wrapper">
     <div id="map-view">
@@ -52,6 +54,7 @@ _.extend(App.prototype, Backbone.Events, {
     var self = this;
 
     /* Collections */
+    this.collections.categories = new CategoryCollection();
     this.collections.stations = new StationCollection();
     this.collections.activeStations = new StationCollection();
 
@@ -68,8 +71,11 @@ _.extend(App.prototype, Backbone.Events, {
       center: [44.71, -83.15],
       zoom: 7
     }).render();
-    // this.views.mapView = new MapView();
-    // this.views.tocView = new TOCView();
+    this.views.tocView = new TOCView({
+      el: $('#toc'),
+      categoryCollection: this.collections.categories,
+      stationCollection: this.collections.stations
+    });
 
     this.views.mapView.drawCircle({
         lat: 45.31,
@@ -81,6 +87,14 @@ _.extend(App.prototype, Backbone.Events, {
 
 
     /* Fetching */
+    this.listenTo(this.collections.activeStations, "reset", function(collection) {
+      self.views.tocView.render({
+      });
+    });
+    this.listenTo(this.collections.stations, "reset", function(collection) {
+      self.collections.activeStations.reset(collection.models);
+    });
+    this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
   }
 });

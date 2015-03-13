@@ -10,7 +10,7 @@ var StationModel = Backbone.Model.extend({
     name: "",
     lat: null,
     lon: null,
-    institution: ""
+    id: ""
   }
 });
 

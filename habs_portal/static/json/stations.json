@@ -3,7 +3,7 @@
     {
       "id":"tollsps",
       "name": "Toledo Low Service Station",
-      "cateogories" : ["temperature", "nutrients"],
+      "categories" : ["temperature", "nutrients"],
       "lat": 40,
       "lon": -80
     }

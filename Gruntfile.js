@@ -10,7 +10,10 @@ module.exports = function(grunt) {
           ],
           "habs_portal/static/js/partials/compiled/map.js" : [
             "habs_portal/static/js/partials/Banner.html",
-            "habs_portal/static/js/partials/Navbar.html"
+            "habs_portal/static/js/partials/Navbar.html",
+            "habs_portal/static/js/partials/TOC.html",
+            "habs_portal/static/js/partials/CategoryItem.html",
+            "habs_portal/static/js/partials/StationItem.html"
           ]
         }
       }
@@ -50,7 +53,10 @@ module.exports = function(grunt) {
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/MapView.js',
-            'habs_portal/static/js/views/NavbarView.js'
+            'habs_portal/static/js/views/NavbarView.js',
+            'habs_portal/static/js/views/TOCView.js',
+            'habs_portal/static/js/views/CategoryItemView.js',
+            'habs_portal/static/js/views/StationItemView.js'
           ],
         }
       },
