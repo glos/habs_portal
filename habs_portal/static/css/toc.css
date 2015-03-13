@@ -1,0 +1,10 @@
+.category-rollup {
+}
+
+.category-rollup a:hover {
+  text-decoration: none;
+}
+
+.panel-title.category-title > a:hover {
+  color: #3288A3;
+}

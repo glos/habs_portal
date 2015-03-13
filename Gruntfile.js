@@ -67,6 +67,7 @@ module.exports = function(grunt) {
           ],
           'habs_portal/static/css/compiled/map.css' : [
             'habs_portal/static/css/common.css',
+            'habs_portal/static/css/toc.css',
             'habs_portal/static/css/popup.css'
           ],
         }
