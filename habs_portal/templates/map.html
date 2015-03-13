@@ -63,53 +63,56 @@ _.extend(App.prototype, Backbone.Events, {
     this.views.bannerView = new BannerView({
       el: $('#banner')
     }).render();
+
     this.views.navbarView = new NavbarView({
       el: $('#navbar'),
       mode: 'map'
     }).render();
+
     this.views.mapView = new StationMapView({
       el: $('#map-view'),
       collection: this.collections.activeStations,
       center: [44.71, -83.15],
       zoom: 7
     }).render();
+
     this.views.tocView = new TOCView({
       el: $('#toc'),
       categoryCollection: this.collections.categories,
       stationCollection: this.collections.stations
     });
 
+    /* Event Listeners */
+
+    /* stations:reset */
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       var models = collection.models;
       self.collections.activeStations.reset(models);
     });
 
+    /* activeStations:reset */
     this.listenTo(this.collections.activeStations, 'reset', function(collection) {
       self.views.mapView.drawStations();
+      self.views.tocView.render({
+      });
     });
 
+    /* mapView:stationClick */
     this.listenTo(this.views.mapView, 'stationClick', function(feature) {
-      console.log("I clicked a feature");
-      console.log(feature.circle);
       this.views.mapView.selectStation(feature.model);
     });
 
+    /* mapView:mapClick */
     this.listenTo(this.views.mapView, 'mapClick', function() {
+      /* If a non-layer was clicked, clear the map of any selected stations */
       this.views.mapView.clearSelection();
     });
 
 
+
     /* Fetching */
-    this.listenTo(this.collections.activeStations, "reset", function(collection) {
-      self.views.tocView.render({
-      });
-    });
-    this.listenTo(this.collections.stations, "reset", function(collection) {
-      self.collections.activeStations.reset(collection.models);
-    });
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
-    this.collections.categories.fetch({reset: true});
   }
 });
 
