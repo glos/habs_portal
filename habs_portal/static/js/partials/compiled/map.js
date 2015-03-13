@@ -34,9 +34,9 @@ this["JST"]["habs_portal/static/js/partials/CategoryItem.html"] = function(obj) 
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p +=
+__p += '<a href="#">' +
 ((__t = ( model.get('name') )) == null ? '' : __t) +
-' <ul> </ul>\n';
+'</a><ul> </ul>\n';
 
 }
 return __p
@@ -46,9 +46,9 @@ this["JST"]["habs_portal/static/js/partials/StationItem.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p +=
+__p += '<a href="#">' +
 ((__t = ( model.get('id') )) == null ? '' : __t) +
-'\n';
+'</a>\n';
 
 }
 return __p

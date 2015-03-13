@@ -19,5 +19,15 @@ var CategoryItemView = Backbone.View.extend({
       });
       self.add(subview);
     });
+  },
+
+  onClick: function(e) {
+    console.log('Category click: ' + this.model.get('name'));
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
+  events: {
+    'click a' : 'onClick' 
   }
 });
