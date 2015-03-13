@@ -58,3 +58,4 @@ habs_portal/static/lib/
 *.swp
 habs_portal/static/css/compiled/
 habs_portal/static/js/compiled/
+habs_portal/static/js/partials/compiled/*

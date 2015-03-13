@@ -168,12 +168,27 @@ var StationMapView = MapView.extend({
       id: model.get('id'),
       model: model,
       selected: opts.selected,
+      popupView: null,
       circle: this.drawCircle(opts)
     };
     this.stations.push(feature);
     feature.circle.on('click', function(event) {
       self.trigger('stationClick', feature);
     });
+    if(opts.selected) {
+      var view = new PopupView({
+        model: feature.model
+      });
+      view.render();
+      this.showPopup(model, view);
+    }
+  },
+  showPopup: function(model, view) {
+    var feature = _.find(this.stations, function(station) {
+      return station.id == model.id
+    });
+    feature.popupView = view;
+    feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
   },
   selectStation: function(model) {
     var feature = _.find(this.stations, function(station) {
@@ -212,3 +227,4 @@ var StationMapView = MapView.extend({
   },
   stations: []
 });
+
