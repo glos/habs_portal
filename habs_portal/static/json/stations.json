@@ -3,9 +3,10 @@
     {
       "id":"tollsps",
       "name": "Toledo Low Service Station",
-      "categories" : ["temperature", "nutrients"],
-      "lat": 40,
-      "lon": -80
+      "cateogories" : ["temperature", "nutrients"],
+      "institution": "University of Toledo",
+      "lat": 41.68,
+      "lon": -83.81
     }
   ]
 }

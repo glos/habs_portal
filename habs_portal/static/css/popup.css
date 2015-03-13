@@ -1,0 +1,15 @@
+.popup-view {
+  color: #6D88A3;
+}
+
+.popup-view h2 {
+  font-size: 24px;
+}
+
+.plot-example {
+  background-image: url('/img/examples/PlotExample.png');
+  background-size: 758px 300px;
+  height: 300px;
+  width: 800px;
+  margin-top: 25px;
+}

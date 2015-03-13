@@ -13,7 +13,8 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/Navbar.html",
             "habs_portal/static/js/partials/TOC.html",
             "habs_portal/static/js/partials/CategoryItem.html",
-            "habs_portal/static/js/partials/StationItem.html"
+            "habs_portal/static/js/partials/StationItem.html",
+            "habs_portal/static/js/partials/Popup.html"
           ]
         }
       }
@@ -31,7 +32,7 @@ module.exports = function(grunt) {
           'habs_portal/static/js/compiled/test.js' : [
             // Libs
             'habs_portal/static/lib/jquery/dist/jquery.js',
-            'habs_portal/static/lib/jquery-ui/jquery-ui.js',
+            //'habs_portal/static/lib/jquery-ui/jquery-ui.js',
             'habs_portal/static/lib/bootstrap/dist/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
@@ -55,7 +56,8 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/NavbarView.js',
             'habs_portal/static/js/views/TOCView.js',
             'habs_portal/static/js/views/CategoryItemView.js',
-            'habs_portal/static/js/views/StationItemView.js'
+            'habs_portal/static/js/views/StationItemView.js',
+            'habs_portal/static/js/views/PopupView.js'
           ],
         }
       },
@@ -64,7 +66,8 @@ module.exports = function(grunt) {
           'habs_portal/static/css/compiled/test.css' : [
           ],
           'habs_portal/static/css/compiled/map.css' : [
-            'habs_portal/static/css/common.css'
+            'habs_portal/static/css/common.css',
+            'habs_portal/static/css/popup.css'
           ],
         }
       }
