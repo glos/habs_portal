@@ -14,11 +14,12 @@ body {
 }
 
 #banner h1 {
-    margin-left: 120px;
+    margin-right: 90px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 50px;
     color: white;
     margin-bottom: 15px;
+    text-align: right;
 }
 
 #wrapper {

@@ -9,16 +9,8 @@
       "name":"Temperature"
     },
     {
-      "id" : "nutrients",
-      "name" : "Nutrients"
-    },
-    {
-      "id":"currents",
-      "name":"Currents"
-    },
-    {
       "id":"conductivity",
-      "name":"Conductivity"
+      "name":"Specific Conductivity"
     },
     {
       "id":"turbidity",
@@ -33,8 +25,8 @@
       "name":"Chlorophyll"
     },
     {
-      "id":"phycocyanin",
-      "name":"Phycocyanin"
+      "id":"bg_algae",
+      "name":"Blue Green Algae"
     }
   ]
 }
