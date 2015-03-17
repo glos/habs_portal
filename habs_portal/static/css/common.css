@@ -56,7 +56,7 @@ body {
 #page-content-wrapper {
     position: fixed;
     top: 140px;
-    left: 18%;
+    padding-left: 18%;
     background: teal;
     height: 100%;
     width: 100%;
