@@ -38,10 +38,9 @@
           </div>
         </div>
         <div class="col-md-7">
-          <div class="panel stations-row1">
-            <div class="panel-body">
-              I am a map
-            </div>
+          <div class="stations-row1">
+            <div id="map-view">
+            </div> <!-- #map -->
           </div>
         </div>
       </div>
@@ -68,7 +67,8 @@ _.extend(App.prototype, Backbone.Events, {
   views: {
     bannerVeiw: null,
     navbarView: null,
-    tocView: null
+    tocView: null,
+    mapView: null
   },
   models: {
   },
@@ -99,6 +99,14 @@ _.extend(App.prototype, Backbone.Events, {
       categoryCollection: this.collections.categoriesStationsOnly,
       stationCollection: this.collections.stations,
     });
+
+    this.views.mapView = new StationMapView({
+      el: $('#map-view'),
+      collection: null,
+      institutions: null,
+      center: [41.63, -82.61],
+      zoom: 10
+    }).render();
 
     /* Event Listeners */
 
