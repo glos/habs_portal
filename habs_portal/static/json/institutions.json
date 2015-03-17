@@ -16,6 +16,11 @@
       "icon" : "/img/institutions/bgsu.png"
     },
     {
+      "id":"toledo",
+      "name" : "City of Toledo",
+      "icon" : "/img/institutions/citytoledo.png"
+    },
+    {
       "id":"osu",
       "name" : "Ohio State University",
       "icon" : "/img/institutions/osu.png"

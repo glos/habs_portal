@@ -4,29 +4,29 @@
       "id":"tollsps",
       "name": "Toledo Low Service Station",
       "categories" : ["stations", "temperature", "conductivity", "chlorophyll", "phycocyanin"],
-      "institution": "uot",
+      "institution": "toledo",
       "lat": 41.67496,
       "lon": -83.3079
     },
     {
       "id":"tolwic",
-      "name": "Water Intake Crib",
+      "name": "Toledo Water Intake Crib",
       "categories" : ["stations"],
-      "institution": "uot",
+      "institution": "toledo",
       "lat": 41.70132,
       "lon": -83.2582
     },
     {
       "id":"tolcrib",
-      "name": "Crib Buoy",
+      "name": "Toledo Crib Buoy",
       "categories" : ["stations"],
-      "institution": "uot",
+      "institution": "toledo",
       "lat": 41.70301,
       "lon": -83.2631
     },
     {
       "id":"we13",
-      "name": "WE13",
+      "name": "NOAA GLERL WE13",
       "categories" : ["stations"],
       "institution": "noaa",
       "lat": 41.73596,
@@ -34,7 +34,7 @@
     },
     {
       "id":"we4",
-      "name": "WE4",
+      "name": "NOAA GLERL WE4",
       "categories" : ["stations"],
       "institution": "noaa",
       "lat": 41.82421,
@@ -42,7 +42,7 @@
     },
     {
       "id":"we2",
-      "name": "WE2",
+      "name": "NOAA GLERL WE2",
       "categories" : ["stations"],
       "institution": "noaa",
       "lat": 41.76973,
@@ -50,7 +50,7 @@
     },
     {
       "id":"we8",
-      "name": "WE8",
+      "name": "NOAA GLERL WE8",
       "categories" : ["stations"],
       "institution": "noaa",
       "lat": 41.83905,
@@ -58,7 +58,7 @@
     },
     {
       "id":"mb99",
-      "name": "MB99",
+      "name": "UT MB99",
       "categories" : ["stations"],
       "institution": "uot",
       "lat": 41.71642,
@@ -66,7 +66,7 @@
     },
     {
       "id":"sdb1",
-      "name": "SDB1",
+      "name": "BGSU SDB1",
       "categories" : ["stations"],
       "institution": "bgsu",
       "lat": 41.46348, 
@@ -74,7 +74,7 @@
     },
     {
       "id":"sbi",
-      "name": "SBI",
+      "name": "OSU SBI",
       "categories" : ["stations"],
       "institution": "osu",
       "lat": 41.66142,
