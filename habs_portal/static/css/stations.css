@@ -1,0 +1,19 @@
+#page-content-wrapper {
+  padding-top: 15px;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.stations-row1 {
+  height: 200px;
+}
+
+.stations-row2 {
+  height: calc(100% - 188px);
+}
