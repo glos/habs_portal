@@ -18,5 +18,9 @@ var CategoryCollection = Backbone.Collection.extend({
       return response.categories;
     }
     return [];
+  },
+  customFilter: function(filters){
+    var results = this.where(filters);
+    return new CategoryCollection(results);
   }
 });

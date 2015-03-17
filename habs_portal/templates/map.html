@@ -99,8 +99,7 @@ _.extend(App.prototype, Backbone.Events, {
     /* activeStations:reset */
     this.listenTo(this.collections.activeStations, 'reset', function(collection) {
       self.views.mapView.drawStations();
-      self.views.tocView.render({
-      });
+      self.views.tocView.render();
     });
 
     /* mapView:stationClick */
