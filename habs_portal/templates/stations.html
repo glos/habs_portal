@@ -162,6 +162,13 @@ _.extend(App.prototype, Backbone.Events, {
       this.views.mapView.clearSelection();
     });
 
+    /* stationMetdataView:onVariableSelect */
+    this.listenTo(this, 'stationMetdataView:onVariableSelect', function(model, variable) {
+      // FIXME.  You may not need the model here.
+      // If you have picked a variable, you should have picked a station 1st.
+      console.log('stationMetdataView:onVariableSelect: ' + model.get('id') + ' ' + variable);
+    });
+
     /* Fetching */
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});

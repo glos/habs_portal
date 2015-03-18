@@ -19,5 +19,18 @@ var StationMetadataView = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template({collection: this.collection}));
+  },
+
+  onVariableSelect: function(e) {
+    // FIXME.  You may not need to pass along collection.first() here.
+    // If you have picked a variable, you should have picked a station 1st.
+    app.trigger('stationMetdataView:onVariableSelect',
+      this.collection.first(),
+      $(e.target).find(':selected').val()
+    );
+  },
+
+  events: {
+    'change select': 'onVariableSelect'
   }
 });
