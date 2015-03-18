@@ -24,6 +24,7 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/StationItem.html",
             "habs_portal/static/js/partials/StationMetadata.html",
             "habs_portal/static/js/partials/Timeseries.html",
+            "habs_portal/static/js/partials/Popup.html"
           ]
         }
       }
@@ -91,6 +92,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/StationMapView.js',
             'habs_portal/static/js/views/StationMetadataView.js',
             'habs_portal/static/js/views/TimeseriesView.js',
+            'habs_portal/static/js/views/PopupView.js'
           ]
         }
       },

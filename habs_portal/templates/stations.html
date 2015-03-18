@@ -77,7 +77,8 @@ _.extend(App.prototype, Backbone.Events, {
   models: {
   },
   collections: {
-    stations: null
+    stations: null,
+    activeStations: null
   },
   start: function() {
     var self = this;
@@ -87,6 +88,8 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.categoriesStationsOnly = new CategoryCollection();
     this.collections.institutions = new InstitutionCollection();
     this.collections.stations = new StationCollection();
+    this.collections.activeStations = new StationCollection();
+    this.collections.activeStationsSelected = new StationCollection();
 
     /* Views */
     this.views.bannerView = new BannerView({
@@ -106,15 +109,16 @@ _.extend(App.prototype, Backbone.Events, {
 
     this.views.mapView = new StationMapView({
       el: $('#map-view'),
-      collection: null,
-      institutions: null,
+      collection: this.collections.activeStations,
+      institutions: this.collections.institutions,
       center: [41.63, -82.61],
       zoom: 10
     }).render();
 
     this.views.stationMetadataView = new StationMetadataView({
       el: $('#station-metadata-view'),
-    }).render();
+      collection: this.collections.activeStationsSelected
+    });
 
     this.views.timeseriesView = new TimeseriesView({
       el: $('#timeseries-view'),
@@ -124,8 +128,38 @@ _.extend(App.prototype, Backbone.Events, {
 
     /* stations:reset */
     this.listenTo(this.collections.stations, 'reset', function(collection) {
-      this.collections.categoriesStationsOnly.reset(this.collections.categories.where({name : 'Stations'}));
+      self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
       self.views.tocView.render();
+      var models = collection.models;
+      self.collections.activeStations.reset(models);
+    });
+
+    this.listenTo(this.collections.activeStationsSelected, 'reset', function(collection) {
+      this.views.stationMetadataView.render();
+    });
+
+    /* stationItemView:onStationSelect */
+    this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
+      this.views.mapView.selectStation(model);
+      self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : model.get('id')}));
+    });
+
+    /* activeStations:reset */
+    this.listenTo(this.collections.activeStations, 'reset', function(collection) {
+      self.views.mapView.drawStations();
+      self.views.tocView.render();
+    });
+
+    /* mapView:stationClick */
+    this.listenTo(this.views.mapView, 'stationClick', function(feature) {
+      this.views.mapView.selectStation(feature.model);
+      self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : feature.model.get('id')}));
+    });
+
+    /* mapView:mapClick */
+    this.listenTo(this.views.mapView, 'mapClick', function() {
+      /* If a non-layer was clicked, clear the map of any selected stations */
+      this.views.mapView.clearSelection();
     });
 
     /* Fetching */

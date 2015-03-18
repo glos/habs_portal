@@ -113,8 +113,6 @@ _.extend(App.prototype, Backbone.Events, {
       this.views.mapView.clearSelection();
     });
 
-
-
     /* Fetching */
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
