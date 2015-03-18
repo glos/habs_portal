@@ -13,3 +13,8 @@ def show_test():
 @api.route('/map/', methods=['GET'])
 def show_map():
     return render_template('map.html')
+
+@api.route('/stations', methods=['GET'])
+@api.route('/stations/', methods=['GET'])
+def show_stations():
+    return render_template('stations.html')

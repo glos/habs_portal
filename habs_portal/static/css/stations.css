@@ -1,0 +1,23 @@
+* {
+  border-radius: 0 !important;
+}
+
+#page-content-wrapper {
+  padding-top: 15px;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.stations-row1 {
+  height: 300px;
+}
+
+.stations-row2 {
+  height: calc(100% - 240px); // not sure why this # works
+}

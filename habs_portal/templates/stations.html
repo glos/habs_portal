@@ -8,13 +8,13 @@
 <script src="/lib/leaflet/dist/leaflet-src.js" type="text/javascript"></script>
 
 <!-- Partials -->
-<script src="/js/partials/compiled/map.js" type="text/javascript"></script>
+<script src="/js/partials/compiled/stations.js" type="text/javascript"></script>
 
 <!-- Scripts -->
-<script src="/js/compiled/map.js" type="text/javascript"></script>
+<script src="/js/compiled/stations.js" type="text/javascript"></script>
 
 <!-- CSS -->
-<link href="/css/compiled/map.css" rel="stylesheet" type="text/css">
+<link href="/css/compiled/stations.css" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block body %}
 
@@ -28,8 +28,36 @@
     </div>
   </div>
   <div id="page-content-wrapper">
-    <div id="map-view">
-    </div> <!-- #map -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="panel stations-row1">
+            <div class="panel-body">
+              <div id="station-metadata-view">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="stations-row1">
+            <div id="map-view">
+            </div> <!-- #map -->
+          </div>
+        </div>
+      </div>
+      <div class="row stations-row2">
+        <div class="col-md-12 stations-row2">
+          <div class="panel full-height">
+            <div class="panel-body">
+              <div id="timeseries-view">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   </div> <!-- #page-content-wrapper -->
 </div> <!-- #wrapper -->
 
@@ -41,23 +69,27 @@ _.extend(App.prototype, Backbone.Events, {
   views: {
     bannerVeiw: null,
     navbarView: null,
+    tocView: null,
     mapView: null,
-    tocView: null
+    stationMetadataView: null,
+    timeseriesView: null
   },
   models: {
   },
   collections: {
     stations: null,
-    activeStations: null,
+    activeStations: null
   },
   start: function() {
     var self = this;
 
     /* Collections */
     this.collections.categories = new CategoryCollection();
+    this.collections.categoriesStationsOnly = new CategoryCollection();
     this.collections.institutions = new InstitutionCollection();
     this.collections.stations = new StationCollection();
     this.collections.activeStations = new StationCollection();
+    this.collections.activeStationsSelected = new StationCollection();
 
     /* Views */
     this.views.bannerView = new BannerView({
@@ -66,34 +98,50 @@ _.extend(App.prototype, Backbone.Events, {
 
     this.views.navbarView = new NavbarView({
       el: $('#navbar'),
-      mode: 'map'
-    }).render();
-
-    this.views.mapView = new StationMapView({
-      el: $('#map-view'),
-      collection: this.collections.activeStations,
-      institutions: this.collections.institutions, // For Icons
-      center: [41.63, -82.61],
-      zoom: 10
+      mode: 'stations'
     }).render();
 
     this.views.tocView = new TOCView({
       el: $('#toc'),
-      categoryCollection: this.collections.categories,
-      stationCollection: this.collections.stations
+      categoryCollection: this.collections.categoriesStationsOnly,
+      stationCollection: this.collections.stations,
     });
+
+    this.views.mapView = new StationMapView({
+      el: $('#map-view'),
+      collection: this.collections.activeStations,
+      institutions: this.collections.institutions,
+      center: [41.63, -82.61],
+      zoom: 10
+    }).render();
+
+    this.views.stationMetadataView = new StationMetadataView({
+      el: $('#station-metadata-view'),
+      collection: this.collections.activeStationsSelected
+    });
+
+    this.views.timeseriesView = new TimeseriesView({
+      el: $('#timeseries-view'),
+    }).render();
 
     /* Event Listeners */
 
     /* stations:reset */
     this.listenTo(this.collections.stations, 'reset', function(collection) {
+      self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
+      self.views.tocView.render();
       var models = collection.models;
       self.collections.activeStations.reset(models);
+    });
+
+    this.listenTo(this.collections.activeStationsSelected, 'reset', function(collection) {
+      this.views.stationMetadataView.render();
     });
 
     /* stationItemView:onStationSelect */
     this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
       this.views.mapView.selectStation(model);
+      self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : model.get('id')}));
     });
 
     /* activeStations:reset */
@@ -105,6 +153,7 @@ _.extend(App.prototype, Backbone.Events, {
     /* mapView:stationClick */
     this.listenTo(this.views.mapView, 'stationClick', function(feature) {
       this.views.mapView.selectStation(feature.model);
+      self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : feature.model.get('id')}));
     });
 
     /* mapView:mapClick */

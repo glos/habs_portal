@@ -1,0 +1,14 @@
+<% collection.each(function(model) { %>
+  <h3><%= model.get('name') %></h3>
+  <%= model.get('institution') %><br>
+  <%= model.get('lat') %>&deg; N, <%= model.get('lon') %>&deg; E<br>
+  <% var categories = _.filter(model.get('categories'),function(o){return o != 'stations'}).sort(); %>
+  <% if (categories.length > 0) { %>
+    <h4>Variables<h4>
+    <select size=<%= Math.min(categories.length,6) %>  class="form-control">
+      <% _.each(categories,function(o) { %>
+        <option><%= o %></option>
+      <% }); %>
+    </select>
+  <% } %>
+<% }) %>

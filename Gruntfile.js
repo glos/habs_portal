@@ -15,6 +15,16 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/CategoryItem.html",
             "habs_portal/static/js/partials/StationItem.html",
             "habs_portal/static/js/partials/Popup.html"
+          ],
+          "habs_portal/static/js/partials/compiled/stations.js" : [
+            "habs_portal/static/js/partials/Banner.html",
+            "habs_portal/static/js/partials/Navbar.html",
+            "habs_portal/static/js/partials/TOC.html",
+            "habs_portal/static/js/partials/CategoryItem.html",
+            "habs_portal/static/js/partials/StationItem.html",
+            "habs_portal/static/js/partials/StationMetadata.html",
+            "habs_portal/static/js/partials/Timeseries.html",
+            "habs_portal/static/js/partials/Popup.html"
           ]
         }
       }
@@ -61,6 +71,29 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/StationItemView.js',
             'habs_portal/static/js/views/PopupView.js'
           ],
+          'habs_portal/static/js/compiled/stations.js' : [
+            // Libs
+            'habs_portal/static/lib/jquery/dist/jquery.js',
+            'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
+            'habs_portal/static/lib/underscore/underscore.js',
+            'habs_portal/static/lib/backbone/backbone.js',
+            // Models
+            'habs_portal/static/js/models/StationModel.js',
+            'habs_portal/static/js/models/CategoryModel.js',
+            'habs_portal/static/js/models/InstitutionModel.js',
+            // Views
+            'habs_portal/static/js/views/BannerView.js',
+            'habs_portal/static/js/views/StationView.js',
+            'habs_portal/static/js/views/NavbarView.js',
+            'habs_portal/static/js/views/TOCView.js',
+            'habs_portal/static/js/views/CategoryItemView.js',
+            'habs_portal/static/js/views/StationItemView.js',
+            'habs_portal/static/js/views/MapView.js',
+            'habs_portal/static/js/views/StationMapView.js',
+            'habs_portal/static/js/views/StationMetadataView.js',
+            'habs_portal/static/js/views/TimeseriesView.js',
+            'habs_portal/static/js/views/PopupView.js'
+          ]
         }
       },
       css: {
@@ -72,6 +105,11 @@ module.exports = function(grunt) {
             'habs_portal/static/css/toc.css',
             'habs_portal/static/css/popup.css'
           ],
+          'habs_portal/static/css/compiled/stations.css' : [
+            'habs_portal/static/css/common.css',
+            'habs_portal/static/css/toc.css',
+            'habs_portal/static/css/stations.css',
+          ]
         }
       }
     },
