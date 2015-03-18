@@ -21,3 +21,8 @@
 .stations-row2 {
   height: calc(100% - 240px); // not sure why this # works
 }
+
+#station-metadata-view {
+  overflow-y: auto;
+  max-height: 270px;
+}
