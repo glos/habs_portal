@@ -16,12 +16,16 @@
 }
 
 .stations-row2 {
-  height: calc(100% - 240px); // not sure why this # works
+  height: calc(100% - 225px); // not sure why this # works
 }
 
 #timeseries-view {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+th {
+  text-align: center !important; // datetimepicker heading must be centered!
 }
 
 #timeseries-plot {
