@@ -133,7 +133,7 @@ _.extend(App.prototype, Backbone.Events, {
 
     /* stationItemView:onStationSelect */
     this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
-      this.views.mapView.selectStation(model);
+      this.views.mapView.highlightStation(model);
       self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : model.get('id')}));
     });
 
@@ -145,7 +145,7 @@ _.extend(App.prototype, Backbone.Events, {
 
     /* mapView:stationClick */
     this.listenTo(this.views.mapView, 'stationClick', function(feature) {
-      this.views.mapView.selectStation(feature.model);
+      this.views.mapView.highlightStation(feature.model);
       self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : feature.model.get('id')}));
     });
 

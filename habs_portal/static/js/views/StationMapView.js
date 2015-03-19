@@ -36,6 +36,7 @@ var StationMapView = MapView.extend({
       self.trigger('stationClick', feature);
     });
     if(opts.selected) {
+      console.log("You wanted a popup, you get a popup!");
       var view = new PopupView({
         model: feature.model,
         institution: this.institutions.findWhere({id: feature.model.get('institution')})
@@ -53,7 +54,7 @@ var StationMapView = MapView.extend({
     popup.openPopup();
     //feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
   },
-  selectStation: function(model) {
+  clearStation: function(model) {
     // First thing to do is clear any current selections
     this.clearSelection();
 
@@ -67,13 +68,35 @@ var StationMapView = MapView.extend({
       this.map.removeLayer(feature.circle);
       this.stations = _.without(this.stations, feature);
     }
-
+  },
+  /*
+   * Selects a specific station by changing its color to red and rendering a
+   * popup view at the stations center. The map is automatically panned or
+   * adjusted based on the leaflet internals for the popups.
+   */
+  selectStation: function(model) {
+    this.clearStation(model);
     // Add it back in with the color changes
     this.addStation(model, {
       color: '#F26D64',
       fillColor: '#AD4E47',
       selected: true
     });
+  },
+  /*
+   * Highlights a specific station by changing the color to red and centering
+   * the map on the selected station.
+   */
+  highlightStation: function(model) {
+    this.clearStation(model);
+
+    // Add it back in with the color changes
+    this.addStation(model, {
+      color: '#F26D64',
+      fillColor: '#AD4E47',
+      selected: false
+    });
+    this.map.panTo({lat: model.get('lat'), lon: model.get('lon')});
   },
   clearSelection: function() {
     var self = this;
