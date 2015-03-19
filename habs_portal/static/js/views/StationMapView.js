@@ -45,6 +45,10 @@ var StationMapView = MapView.extend({
       this.showPopup(model, view);
     }
   },
+  /*
+   * Renders a BackboneView in a leaflet popup window. WARNING: make sure your
+   * popup and view sizes are correct.
+   */
   showPopup: function(model, view) {
     var feature = _.find(this.stations, function(station) {
       return station.id == model.id
@@ -54,6 +58,9 @@ var StationMapView = MapView.extend({
     popup.openPopup();
     //feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
   },
+  /*
+   * Removes a station from the map
+   */
   clearStation: function(model) {
     // First thing to do is clear any current selections
     this.clearSelection();
@@ -98,6 +105,10 @@ var StationMapView = MapView.extend({
     });
     this.map.panTo({lat: model.get('lat'), lon: model.get('lon')});
   },
+  /*
+   * Removes any selected features from the map and re-adds them back without
+   * the color changes.
+   */
   clearSelection: function() {
     var self = this;
     var selectedFeatures = _.where(this.stations, {selected: true});
@@ -108,6 +119,10 @@ var StationMapView = MapView.extend({
       self.addStation(feature.model);
     });
   },
+  /*
+   * Goes through each station in the collection and adds the station to the
+   * map.
+   */
   drawStations: function() {
     var self = this;
     this.collection.each(function(model) {
