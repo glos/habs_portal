@@ -16,5 +16,6 @@ var TimeseriesView = Backbone.View.extend({
   template: JST['habs_portal/static/js/partials/Timeseries.html'],
   render: function() {
     this.$el.html(this.template());
+    this.$el.find('.input-group.date').datetimepicker();
   }
 });

@@ -30,15 +30,11 @@
   <div id="page-content-wrapper">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
-          <div class="panel stations-row1">
-            <div class="panel-body">
-              <div id="station-metadata-view">
-              </div>
-            </div>
+        <div class="col-md-6">
+          <div id="station-metadata-view" class="stations-row1">
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
           <div class="stations-row1">
             <div id="map-view">
             </div> <!-- #map -->
@@ -47,11 +43,7 @@
       </div>
       <div class="row stations-row2">
         <div class="col-md-12 stations-row2">
-          <div class="panel full-height">
-            <div class="panel-body">
-              <div id="timeseries-view">
-              </div>
-            </div>
+          <div id="timeseries-view" class="full-height">
           </div>
         </div>
       </div>
@@ -130,6 +122,7 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
       self.views.tocView.render();
+      self.views.stationMetadataView.render();
       var models = collection.models;
       self.collections.activeStations.reset(models);
     });
@@ -160,6 +153,13 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this.views.mapView, 'mapClick', function() {
       /* If a non-layer was clicked, clear the map of any selected stations */
       this.views.mapView.clearSelection();
+    });
+
+    /* stationMetdataView:onVariableSelect */
+    this.listenTo(this, 'stationMetdataView:onVariableSelect', function(model, variable) {
+      // FIXME.  You may not need the model here.
+      // If you have picked a variable, you should have picked a station 1st.
+      console.log('stationMetdataView:onVariableSelect: ' + model.get('id') + ' ' + variable);
     });
 
     /* Fetching */

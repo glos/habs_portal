@@ -75,6 +75,8 @@ module.exports = function(grunt) {
             // Libs
             'habs_portal/static/lib/jquery/dist/jquery.js',
             'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
+            'habs_portal/static/lib/moment/moment.js',
+            'habs_portal/static/lib/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
             // Models
