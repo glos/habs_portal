@@ -74,6 +74,7 @@ _.extend(App.prototype, Backbone.Events, {
   },
   start: function() {
     var self = this;
+    this.stationID = getParameterByName("id");
 
     /* Collections */
     this.collections.categories = new CategoryCollection();
@@ -121,7 +122,6 @@ _.extend(App.prototype, Backbone.Events, {
     /* stations:reset */
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
-      self.views.tocView.render();
       self.views.stationMetadataView.render();
       var models = collection.models;
       self.collections.activeStations.reset(models);
@@ -141,6 +141,18 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this.collections.activeStations, 'reset', function(collection) {
       self.views.mapView.drawStations();
       self.views.tocView.render();
+      // Open up the first item (categories in this case)
+      self.views.tocView.subviews[0].collapse();
+      // If the page was loaded with a particular station in mind, go right to it.
+      if(self.stationID) {
+        var model = collection.get(self.stationID);
+      } else {
+        var model = collection.at(0);
+      }
+      if(model) {
+        self.trigger('stationItemView:onStationSelect', model);
+      }
+
     });
 
     /* mapView:stationClick */

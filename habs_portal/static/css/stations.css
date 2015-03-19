@@ -10,6 +10,11 @@
   height: 100%;
 }
 
+.plotting-row {
+  height: 300px;
+  padding-bottom: 40px;
+}
+
 .stations-row1 {
   height: 300px;
   padding-bottom: 20px;
@@ -29,10 +34,8 @@ th {
 }
 
 #timeseries-plot {
-  background: url(http://junkcharts.typepad.com/.a/6a00d8341e992c53ef017ee6ec98d3970d-pi);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
+  height: 100%;
+  width: 100%;
 }
 
 .justified {

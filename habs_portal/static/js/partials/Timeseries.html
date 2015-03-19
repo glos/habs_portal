@@ -1,8 +1,8 @@
-<div class="row full-height">
-  <div class="panel panel-default full-height">
+<div class="row">
+  <div class="panel panel-default">
     <div class="panel-heading">Plotting</div>
-    <div class="panel-body full-height">
-      <div class="row full-height">
+    <div class="panel-body">
+      <div class="row plotting-row">
         <div class="col-md-4 full-height">
           <p class="justified">
             How I love this website!  HAB's for everyone, everwhere.  Now play that funky music, white boy.
@@ -14,31 +14,32 @@
               <div class="col-md-10">
                 <div class="input-group date" id="start-date">
                   <input type="text" class="form-control">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                </div>
-              </div>
-            </div>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div> <!-- /.input-group.date -->
+              </div> <!-- /.col-md-10 -->
+            </div> <!-- /.form-group -->
             <div class="form-group">
               <label for="end-date" class="col-md-2 control-label">End</label>
               <div class="col-md-10">
-                <div class="input-group date" id="start-date">
+                <div class="input-group date" id="end-date">
                   <input type="text" class="form-control">
-                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                </div>
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div> <!-- /.input-group -->
               </div>
-            </div>
+            </div> <!-- /.form-group -->
             <br>
             <div class="form-group">
               <div class="col-md-offset-2 col-md-8">
                 <button class="btn btn-default btn-block">Refresh Plot</button>
-              </div>
-            </div>
-          </div>
+              </div> <!-- /.col-md-offset-2.col-md-8 -->
+            </div> <!-- /.form-group -->
+          </div> <!-- /.form-horizontal -->
         </div>
         <div class="col-md-8 full-height">
-          <div id="timeseries-plot" class="full-height">
-        </div>
-      </div> 
-    </div>
-  </div>
+          <div id="timeseries-plot">
+          </div> <!-- /#timeseries-plot -->
+        </div> <!-- /.col-md-8 -->
+      </div> <!-- /.row -->
+    </div> <!-- /.panel-body -->
+  </div> <!-- /.panel -->
 </div>

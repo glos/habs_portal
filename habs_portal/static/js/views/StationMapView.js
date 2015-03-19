@@ -20,6 +20,7 @@ var StationMapView = MapView.extend({
       color: '#A1865B',
       fillColor: '#EED8B6',
       selected: false,
+      highlighted: false,
       radius: 10
     };
     _.extend(opts, options);
@@ -28,6 +29,7 @@ var StationMapView = MapView.extend({
       id: model.get('id'),
       model: model,
       selected: opts.selected,
+      highlighted: opts.highlighted,
       popupView: null,
       circle: this.drawCircle(opts)
     };
@@ -36,7 +38,6 @@ var StationMapView = MapView.extend({
       self.trigger('stationClick', feature);
     });
     if(opts.selected) {
-      console.log("You wanted a popup, you get a popup!");
       var view = new PopupView({
         model: feature.model,
         institution: this.institutions.findWhere({id: feature.model.get('institution')})
@@ -101,7 +102,7 @@ var StationMapView = MapView.extend({
     this.addStation(model, {
       color: '#F26D64',
       fillColor: '#AD4E47',
-      selected: false
+      highlighted: true
     });
     this.map.panTo({lat: model.get('lat'), lon: model.get('lon')});
   },
@@ -112,6 +113,13 @@ var StationMapView = MapView.extend({
   clearSelection: function() {
     var self = this;
     var selectedFeatures = _.where(this.stations, {selected: true});
+    _.each(selectedFeatures, function(feature) {
+      self.map.removeLayer(feature.circle);
+      self.stations.pop(feature);
+
+      self.addStation(feature.model);
+    });
+    var selectedFeatures = _.where(this.stations, {highlighted: true});
     _.each(selectedFeatures, function(feature) {
       self.map.removeLayer(feature.circle);
       self.stations.pop(feature);
