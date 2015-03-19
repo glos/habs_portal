@@ -1,7 +1,28 @@
 <div class="row-fluid full-height">
-  <div id="timeseries-controls" class="col-md-3 full-height">
-    Controls here.
+  <div id="timeseries-controls" class="col-md-4 full-height">
+    Instructions for our awesome plotting tool go here.<br>
+    <br>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="start-date" class="col-md-4 control-label">Start</label>
+        <div class="col-md-8">
+          <input type="date" class="form-control" id="start-date" placeholder="Start Date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="end-date" class="col-md-4 control-label">End</label>
+        <div class="col-md-8">
+          <input type="date" class="form-control" id="end-date" placeholder="End Date">
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+          <button class="btn btn-default btn-block">Refresh Plot</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="timeseries-plot" class="col-md-9 full-height">
+  <div id="timeseries-plot" class="col-md-8 full-height">
   </div>
 </div>
