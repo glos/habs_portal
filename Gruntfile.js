@@ -69,6 +69,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/TOCView.js',
             'habs_portal/static/js/views/CategoryItemView.js',
             'habs_portal/static/js/views/StationItemView.js',
+            'habs_portal/static/js/views/SVGView.js',
             'habs_portal/static/js/views/PopupView.js'
           ],
           'habs_portal/static/js/compiled/stations.js' : [

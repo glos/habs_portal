@@ -6,8 +6,9 @@ Proxy routes for cross-domain requests
 '''
 
 from habs_portal import habs_portal as api
-
-from flask import jsonify
+from flask import current_app as app
+from flask import jsonify, request
+import requests
 
 @api.route('/api/test', methods=['GET'])
 def get_tests():
@@ -18,3 +19,14 @@ def get_tests():
 @api.route('/api/test/<int:id>', methods=['GET'])
 def get_test(id):
     return jsonify(message='Hi this is %s' % id)
+
+@api.route('/plotting/getplot', methods=['GET'])
+@api.route('/plotting/getplot/', methods=['GET'])
+def get_plot():
+    plot_service = app.config['PLOT_SERVICE']
+    if plot_service is None:
+        return api.send_static_file('svg/plot_example.svg')
+        # Return static file
+    plot_service += '/plotting/getplot/'
+    response = requests.get(plot_service, params=request.args)
+    return response.content, 200, dict(response.headers)

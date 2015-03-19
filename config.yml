@@ -7,3 +7,4 @@ COMMON: &common
     PORT: 3000
     JSONIFY_PRETTYPRINT_REGULAR: true
     DEBUG: True
+    PLOT_SERVICE: null
