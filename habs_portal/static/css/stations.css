@@ -26,3 +26,10 @@
   overflow-y: auto;
   max-height: 270px;
 }
+
+#timeseries-plot {
+  background: url(http://junkcharts.typepad.com/.a/6a00d8341e992c53ef017ee6ec98d3970d-pi);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}
