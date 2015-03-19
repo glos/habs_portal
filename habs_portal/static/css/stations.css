@@ -16,15 +16,11 @@
 
 .stations-row1 {
   height: 300px;
+  padding-bottom: 20px;
 }
 
 .stations-row2 {
   height: calc(100% - 240px); // not sure why this # works
-}
-
-#station-metadata-view {
-  overflow-y: auto;
-  max-height: 270px;
 }
 
 #timeseries-plot {
