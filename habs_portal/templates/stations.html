@@ -122,6 +122,7 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
       self.views.tocView.render();
+      self.views.stationMetadataView.render();
       var models = collection.models;
       self.collections.activeStations.reset(models);
     });
