@@ -1,21 +1,21 @@
 <% collection.each(function(model) { %>
   <% var categories = _.filter(model.get('categories'),function(o){return o != 'stations'}).sort(); %>
   <div class="panel panel-default full-height">
-    <div class="panel-heading"><%= model.get('name') %>: <%= model.get('institution') %></div>
+    <div class="panel-heading"><%= model.get('name') %>: <%= model.get('institution') %><br><%= model.get('lat') %>&deg; N, <%= model.get('lon') %>&deg; E</div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-5">
-          <img id="metadata-thumb" src="http://upload.wikimedia.org/wikipedia/commons/0/0c/NOAA-NDBC-discus-buoy.jpg">
-        </div>
         <div class="col-md-7">
           <% if (categories.length > 0) { %>
-            <p><select size=10  class="form-control">
+            Available Parameters<br>
+            <select size=9  class="form-control">
               <% _.each(categories,function(o) { %>
                 <option><%= o %></option>
               <% }); %>
-            </select></p>
-            <p id="metadata-coords"><%= model.get('lat') %>&deg; N, <%= model.get('lon') %>&deg; E</p>
+            </select>
           <% } %>
+        </div>
+        <div class="col-md-5">
+          <img id="metadata-thumb" src="http://upload.wikimedia.org/wikipedia/commons/0/0c/NOAA-NDBC-discus-buoy.jpg">
         </div>
       </div>
     </div>

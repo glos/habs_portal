@@ -36,9 +36,6 @@
 }
 
 #metadata-thumb {
-  height: 205px;
-}
-
-#metadata-coords {
-  margin-top: -4px;
+  height: 187px;
+  float: right;
 }
