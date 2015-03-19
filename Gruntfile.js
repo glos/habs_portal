@@ -94,6 +94,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/MapView.js',
             'habs_portal/static/js/views/StationMapView.js',
             'habs_portal/static/js/views/StationMetadataView.js',
+            'habs_portal/static/js/views/SVGView.js',
             'habs_portal/static/js/views/TimeseriesView.js',
             'habs_portal/static/js/views/PopupView.js'
           ]
