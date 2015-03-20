@@ -3,9 +3,11 @@
     <%= model.get('name') %>
   </h3>
   <div class="pull-right">
-    <span data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
-      <i class="fa fa-toggle-down"></i>
+    <% if(collectionLength>0) { %>
+    <span class="badge">
+      <%= collectionLength %>
     </span>
+    <% } %>
   </div>
   <div class="clearfix"></div>
 </div>
