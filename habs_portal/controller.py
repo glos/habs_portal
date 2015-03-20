@@ -18,3 +18,8 @@ def show_map():
 @api.route('/stations/', methods=['GET'])
 def show_stations():
     return render_template('stations.html')
+
+@api.route('/plotting', methods=['GET'])
+@api.route('/plotting/', methods=['GET'])
+def show_plotting():
+    return render_template('plotting.html')

@@ -25,6 +25,13 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/StationMetadata.html",
             "habs_portal/static/js/partials/Timeseries.html",
             "habs_portal/static/js/partials/Popup.html"
+          ],
+          "habs_portal/static/js/partials/compiled/plotting.js" : [
+            "habs_portal/static/js/partials/Banner.html",
+            "habs_portal/static/js/partials/Navbar.html",
+            "habs_portal/static/js/partials/TOC.html",
+            "habs_portal/static/js/partials/TOCParentItem.html",
+            "habs_portal/static/js/partials/TOCChildItem.html",
           ]
         }
       }
@@ -97,6 +104,26 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/SVGView.js',
             'habs_portal/static/js/views/TimeseriesView.js',
             'habs_portal/static/js/views/PopupView.js'
+          ],
+          'habs_portal/static/js/compiled/plotting.js' : [
+            // Libs
+            'habs_portal/static/lib/jquery/dist/jquery.js',
+            'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
+            'habs_portal/static/lib/moment/moment.js',
+            'habs_portal/static/lib/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
+            'habs_portal/static/lib/underscore/underscore.js',
+            'habs_portal/static/lib/backbone/backbone.js',
+            // Models
+            'habs_portal/static/js/models/StationModel.js',
+            'habs_portal/static/js/models/CategoryModel.js',
+            'habs_portal/static/js/models/InstitutionModel.js',
+            // Views
+            'habs_portal/static/js/views/BannerView.js',
+            'habs_portal/static/js/views/StationView.js',
+            'habs_portal/static/js/views/NavbarView.js',
+            'habs_portal/static/js/views/TOCView.js',
+            'habs_portal/static/js/views/TOCParentItemView.js',
+            'habs_portal/static/js/views/TOCChildItemView.js'
           ]
         }
       },
