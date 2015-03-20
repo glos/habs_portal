@@ -79,8 +79,11 @@ _.extend(App.prototype, Backbone.Events, {
 
     this.views.tocView = new TOCView({
       el: $('#toc'),
-      categoryCollection: this.collections.categories,
-      stationCollection: this.collections.stations
+      parentCollection: this.collections.categories,
+      childCollection: this.collections.stations,
+      parentChildAssociation: function(parent,child) {
+        return _.indexOf(child.get('categories'),parent.get('id')) >= 0
+      }
     });
 
     /* Event Listeners */
@@ -91,8 +94,9 @@ _.extend(App.prototype, Backbone.Events, {
       self.collections.activeStations.reset(models);
     });
 
-    /* stationItemView:onStationSelect */
-    this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
+    /* tocChildItemView:onTOCChildSelect */
+    this.listenTo(this, 'tocChildItemView:onTOCChildSelect', function(model) {
+      // this is a station
       this.views.mapView.selectStation(model);
     });
 
