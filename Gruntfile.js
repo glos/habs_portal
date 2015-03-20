@@ -33,6 +33,7 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/TOCParentItem.html",
             "habs_portal/static/js/partials/TOCChildItem.html",
             "habs_portal/static/js/partials/Timeseries.html",
+            "habs_portal/static/js/partials/PlotCancelButtons.html"
           ]
         }
       }
@@ -127,7 +128,9 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/TOCView.js',
             'habs_portal/static/js/views/TOCParentItemView.js',
             'habs_portal/static/js/views/TOCChildItemView.js',
-            'habs_portal/static/js/views/TimeseriesView.js'
+            'habs_portal/static/js/views/TimeseriesView.js',
+            'habs_portal/static/js/views/PlotCancelButtonsView.js',
+            'habs_portal/static/js/views/SVGView.js'
           ]
         }
       },

@@ -38,18 +38,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12 text-center">
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Toledo Low Service - Temperature (C)
-                    </button>
-                    &nbsp;&nbsp;
-                    <button type="button" class="btn btn-success btn-xs">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Toledo Water Intake Crib - Temperature (C)
-                    </button>
-                    &nbsp;&nbsp;
-                    <button type="button" class="btn btn-danger btn-xs">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> OSU SBI - Temperature (C)
-                    </button>
+                  <div class="col-md-12 text-center" id="plot-cancel-buttons-view">
                   </div>
                 </div>
               </div>
@@ -97,7 +86,8 @@ _.extend(App.prototype, Backbone.Events, {
     bannerVeiw: null,
     navbarView: null,
     tocView: null,
-    timeseriesView: null
+    timeseriesView: null,
+    plotCancelButtonsView: null
   },
   models: {
   },
@@ -137,6 +127,10 @@ _.extend(App.prototype, Backbone.Events, {
       el: $('#timeseries-view'),
     }).render();
 
+    this.views.plotCancelButtonsView = new PlotCancelButtonsView({
+      el: $('#plot-cancel-buttons-view'),
+    }).render();
+
     /* Event Listeners */
 
     /* stations:reset */
@@ -155,6 +149,12 @@ _.extend(App.prototype, Backbone.Events, {
     this.listenTo(this, 'timeseriesView:onRefreshClick', function(model, options) {
       // FIXME.  No model here yet.
       console.log('timeseriesView:onRefreshClick: from ' + options.start + ' to ' + options.end);
+    });
+
+    /* plotCacnelButtonsView:onButtonClick */
+    this.listenTo(this, 'plotCacnelButtonsView:onButtonClick', function(model, options) {
+      // FIXME.  No model here yet.
+      console.log('plotCacnelButtonsView:onButtonClick: ' + options.dataset);
     });
 
     /* Fetching */
