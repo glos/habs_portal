@@ -8,3 +8,5 @@ COMMON: &common
     JSONIFY_PRETTYPRINT_REGULAR: true
     DEBUG: True
     PLOT_SERVICE: null
+    THREDDS_SERVICE: 'http://tds.glos.us/thredds/catalog/glos/habs/'
+

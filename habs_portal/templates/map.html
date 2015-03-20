@@ -58,6 +58,7 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.institutions = new InstitutionCollection();
     this.collections.stations = new StationCollection();
     this.collections.activeStations = new StationCollection();
+    this.collections.datasets = new DatasetCollection();
 
     /* Views */
     this.views.bannerView = new BannerView({
@@ -121,6 +122,7 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
     this.collections.institutions.fetch({reset: true});
+    this.collections.datasets.fetch({reset: true});
   }
 });
 

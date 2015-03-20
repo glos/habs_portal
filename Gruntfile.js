@@ -58,9 +58,10 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
             // Models
-            'habs_portal/static/js/models/StationModel.js',
+            'habs_portal/static/js/models/DatasetModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
             'habs_portal/static/js/models/InstitutionModel.js',
+            'habs_portal/static/js/models/StationModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/MapView.js',
