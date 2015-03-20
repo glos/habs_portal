@@ -40,9 +40,15 @@ th {
 
 .justified {
   text-align: justify;
+  height: calc(100% - 155px);
 }
 
 #metadata-thumb {
   height: 187px;
   float: right;
+}
+
+.leaflet-container{
+  z-index: 0;
+  border-radius: 4px;
 }

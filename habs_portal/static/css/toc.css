@@ -17,6 +17,27 @@
   color: #3288A3;
 }
 
+.panel-heading h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+  width: 80%;
+  padding-top: 3px;
+  font-size: 14px;
+  color: #777;
+}
+
+.panel-heading h3:hover {
+  color: #222;
+  cursor: pointer;
+}
+
+.panel-default > .panel-heading .badge {
+  background-color: #777 !important;
+  cursor: pointer;
+}
+
 ul.station-list {
   list-style-type: none;
   padding-left: 10px;
@@ -27,8 +48,27 @@ ul.station-list {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: 475;
-  color: #3288A3;
+  color: #777;
 }
 .station-list li a:hover {
-  color: #1F5566;
+  color: #222;
+}
+
+.icon-list li {
+  padding: 0 0 5px 20px;
+  display: block;
+  position: relative;
+}
+
+.icon-list li:before {
+  font-family: 'Glyphicons Halflings';
+  color: #777;
+  position: absolute;
+  left: 0px;
+  top: 3px;
+  font-size: 80%
+}
+
+.chevron-right li:before {
+ content: '\e080';
 }

@@ -1,0 +1,32 @@
+#page-content-wrapper {
+  padding-top: 15px;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.plotting-row1 {
+  height: 450px;
+  padding-bottom: 20px;
+}
+
+.plotting-row2 {
+  height: calc(100% - 230px);
+}
+
+#timeseries-container {
+  height: 370px;
+}
+
+#data-view > .panel {
+  overflow-y: auto;
+}
+
+#data-view td {
+  text-align: center;
+}

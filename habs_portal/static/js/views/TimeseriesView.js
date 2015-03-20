@@ -10,10 +10,13 @@ var TimeseriesView = Backbone.View.extend({
     console.log("Timeseries View initialized");
     this.initialRender();
   },
+
   initialRender: function() {
     this.$el.html('<i>Spin wheel normally goes here</i>');
   },
+
   template: JST['habs_portal/static/js/partials/Timeseries.html'],
+
   render: function() {
     this.$el.html(this.template());
     this.$el.find('.input-group.date').datetimepicker();
@@ -37,5 +40,13 @@ var TimeseriesView = Backbone.View.extend({
     });
     svgPlotView.fetch();
     this.$el.find('#timeseries-plot').html(svgPlotView.el);
+  },
+
+  onRefreshClick: function(e) {
+    app.trigger('timeseriesView:onRefreshClick', this.model, {start : $('#start-date').val(), end : $('#end-date').val()});
+  },
+
+  events: {
+    'click #refresh-button' : 'onRefreshClick'
   }
 });

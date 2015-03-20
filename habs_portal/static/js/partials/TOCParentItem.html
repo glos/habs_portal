@@ -1,24 +1,19 @@
 <div class="category-rollup panel-heading" role="tab" id="heading<%= model.get('name') %>">
-  <h4 class="panel-title category-title">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
-      <%= model.get('name') %>
-    </a>
-    &nbsp;
+  <h3 class="panel-title category-title pull-left" title="<%= model.get('name') %>">
+    <%= model.get('name') %>
+  </h3>
+  <div class="pull-right">
     <% if(collectionLength>0) { %>
     <span class="badge">
       <%= collectionLength %>
     </span>
     <% } %>
-    <div class="pull-right">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= model.get('name') %>" aria-expanded="false" aria-controls="collapse<%= model.get('name') %>">
-        <i class="fa fa-toggle-down"></i>
-      </a>
-    </div>
-  </h4>
+  </div>
+  <div class="clearfix"></div>
 </div>
 <div id="collapse<%= model.get('name') %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= model.get('name') %>">
   <div class="panel-body">
-    <ul class="station-list">
+    <ul class="station-list list-unstyled icon-list chevron-right">
     </ul>
   </div>
 </div>
