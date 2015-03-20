@@ -119,6 +119,14 @@ At the project root:
 python app.py
 ```
 
+## Generating the Datasets Cache
+For performance reasons, the application has a local cache of the dataset
+catalog supplied by THREDDS. To update this cache please run the following:
+
+```
+python manage.py harvest habs_portal/static/json/dataset.json
+```
+
 To verify that it works you can curl the test API and/or go to the `/test/` URL.
 
 ## Development
