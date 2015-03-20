@@ -8,3 +8,4 @@ itsdangerous==0.24
 requests==2.5.3
 wsgiref==0.1.2
 Flask-Environments==0.1
+-e git+https://github.com/asascience-open/thredds_crawler@7c90fe852fad3c22251ecb8de4b40a640cf111bb#egg=thredds_crawler-master
