@@ -80,6 +80,7 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
+            'habs_portal/static/js/common/urlParse.js',
             // Models
             'habs_portal/static/js/models/StationModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
