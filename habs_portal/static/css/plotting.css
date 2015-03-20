@@ -18,3 +18,7 @@
 .plotting-row2 {
   height: calc(100% - 300px); // not sure why this # works
 }
+
+#timeseries-container {
+  height: 325px;
+}

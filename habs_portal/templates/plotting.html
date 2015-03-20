@@ -28,12 +28,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <div id="plot-view" class="plotting-row1">
+          <div class="plotting-row1">
             <div class="panel panel-default full-height">
-              <div class="panel-body">
+              <div class="panel-body full-height">
                 <div class="row">
-                  <div class="col-md-12 text-center">
-                    <img src="http://junkcharts.typepad.com/.a/6a00d8341e992c53ef017ee6ec98d3970d-pi" height=350>
+                  <div class="col-md-12">
+                    <div id="timeseries-container" class="panel panel-default">
+                      <div id="timeseries-view" class="panel-body full-height">
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
@@ -89,7 +92,8 @@ _.extend(App.prototype, Backbone.Events, {
   views: {
     bannerVeiw: null,
     navbarView: null,
-    tocView: null
+    tocView: null,
+    timeseriesView: null
   },
   models: {
   },
@@ -124,6 +128,11 @@ _.extend(App.prototype, Backbone.Events, {
         return _.indexOf(parent.get('categories'),child.get('id')) >= 0
       }
     });
+
+    this.views.timeseriesView = new TimeseriesView({
+      el: $('#timeseries-view'),
+    }).render();
+
     /* Event Listeners */
 
     /* stations:reset */

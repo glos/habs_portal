@@ -32,6 +32,7 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/TOC.html",
             "habs_portal/static/js/partials/TOCParentItem.html",
             "habs_portal/static/js/partials/TOCChildItem.html",
+            "habs_portal/static/js/partials/Timeseries.html",
           ]
         }
       }
@@ -123,7 +124,8 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/NavbarView.js',
             'habs_portal/static/js/views/TOCView.js',
             'habs_portal/static/js/views/TOCParentItemView.js',
-            'habs_portal/static/js/views/TOCChildItemView.js'
+            'habs_portal/static/js/views/TOCChildItemView.js',
+            'habs_portal/static/js/views/TimeseriesView.js'
           ]
         }
       },
@@ -139,12 +141,14 @@ module.exports = function(grunt) {
           'habs_portal/static/css/compiled/stations.css' : [
             'habs_portal/static/css/common.css',
             'habs_portal/static/css/toc.css',
+            'habs_portal/static/css/timeseries.css',
             'habs_portal/static/css/stations.css',
           ],
           'habs_portal/static/css/compiled/plotting.css' : [
             'habs_portal/static/css/common.css',
             'habs_portal/static/css/toc.css',
-            'habs_portal/static/css/plotting.css',
+            'habs_portal/static/css/timeseries.css',
+            'habs_portal/static/css/plotting.css'
           ]
         }
       }

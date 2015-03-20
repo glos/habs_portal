@@ -19,26 +19,6 @@
   height: calc(100% - 225px); // not sure why this # works
 }
 
-#timeseries-view {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-th {
-  text-align: center !important; // datetimepicker heading must be centered!
-}
-
-#timeseries-plot {
-  background: url(http://junkcharts.typepad.com/.a/6a00d8341e992c53ef017ee6ec98d3970d-pi);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-}
-
-.justified {
-  text-align: justify;
-}
-
 #metadata-thumb {
   height: 187px;
   float: right;
