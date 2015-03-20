@@ -5,15 +5,15 @@
       "name":"Stations"
     },
     {
-      "id": "temperature",
-      "name":"Temperature"
+      "id": "sea_surface_water_temperature",
+      "name":"Surface Water Temperature"
     },
     {
-      "id":"conductivity",
+      "id":"water_conductivity",
       "name":"Specific Conductivity"
     },
     {
-      "id":"turbidity",
+      "id":"ysi_turbidity",
       "name":"Turbidity"
     },
     {
@@ -21,11 +21,11 @@
       "name":"pH"
     },
     {
-      "id":"chlorophyll",
+      "id":"ysi_chlorophyll",
       "name":"Chlorophyll"
     },
     {
-      "id":"bg_algae",
+      "id":"ysi_blue_green_algae",
       "name":"Blue Green Algae"
     }
   ]

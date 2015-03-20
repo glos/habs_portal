@@ -3,7 +3,15 @@
     {
       "id":"tollsps",
       "name": "Toledo Low Service Station",
-      "categories" : ["stations", "temperature", "conductivity", "chlorophyll", "phycocyanin"],
+      "categories" : [
+        "stations", 
+        "sea_surface_water_temperature", 
+        "water_conductivity", 
+        "ysi_turbidity",
+        "ph",
+        "ysi_chlorophyll", 
+        "ysi_blue_green_algae"
+      ],
       "institution": "toledo",
       "lat": 41.67496,
       "lon": -83.3079
