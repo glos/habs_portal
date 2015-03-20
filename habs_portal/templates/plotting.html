@@ -167,33 +167,11 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.institutions.fetch({reset: true});
 
     /*
-      special case to listen for window resize
+      Special case to listen for window resize.  The view is listening directly to its model
+      rather than allowing the app to broker that exchange.
     */
     _.extend(window, Backbone.Events);
     window.onresize = function() { window.trigger('resize') };
-
-    WindowModel = Backbone.Model.extend({
-      initialize: function() {
-        this.set_size();
-        this.listenTo(window, 'resize', _.debounce(this.set_size));
-      },
-      set_size: function() {
-        this.set({
-          width: $(window).width(),
-          height: $(window).height()
-        });
-      }
-    });
-
-    WindowView = Backbone.View.extend({
-      initialize: function() {
-        this.listenTo(this.model, 'change', this.resize);
-      },
-      resize: function() {
-        app.trigger('windowView:resize',this.model);
-      },
-    });
-
     new WindowView({model: new WindowModel()});
   }
 });
