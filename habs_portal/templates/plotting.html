@@ -166,35 +166,35 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.stations.fetch({reset: true});
     this.collections.institutions.fetch({reset: true});
 
-    window.onload = function() {
-      _.extend(window, Backbone.Events);
-      window.onresize = function() { window.trigger('resize') };
+    /*
+      special case to listen for window resize
+    */
+    _.extend(window, Backbone.Events);
+    window.onresize = function() { window.trigger('resize') };
 
-      WindowModel = Backbone.Model.extend({
-        initialize: function() {
-          this.set_size();
-          this.listenTo(window, 'resize', _.debounce(this.set_size));
-        },
-        set_size: function() {
-          this.set({
-            width: $(window).width(),
-            height: $(window).height()
-          });
-        }
-      });
+    WindowModel = Backbone.Model.extend({
+      initialize: function() {
+        this.set_size();
+        this.listenTo(window, 'resize', _.debounce(this.set_size));
+      },
+      set_size: function() {
+        this.set({
+          width: $(window).width(),
+          height: $(window).height()
+        });
+      }
+    });
 
-      WindowView = Backbone.View.extend({
-        initialize: function() {
-          this.listenTo(this.model, 'change', this.resize);
-        },
-        resize: function() {
-          app.trigger('windowView:resize',this.model);
-        },
-      });
+    WindowView = Backbone.View.extend({
+      initialize: function() {
+        this.listenTo(this.model, 'change', this.resize);
+      },
+      resize: function() {
+        app.trigger('windowView:resize',this.model);
+      },
+    });
 
-      new WindowView({model: new WindowModel()});
-    }
-
+    new WindowView({model: new WindowModel()});
   }
 });
 
