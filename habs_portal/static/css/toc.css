@@ -57,3 +57,22 @@ ul.station-list {
 .station-list li a:hover {
   color: #222;
 }
+
+.icon-list li {
+  padding: 0 0 5px 20px;
+  display: block;
+  position: relative;
+}
+
+.icon-list li:before {
+  font-family: 'Glyphicons Halflings';
+  color: #777;
+  position: absolute;
+  left: 0px;
+  top: 3px;
+  font-size: 80%
+}
+
+.chevron-right li:before {
+ content: '\e080';
+}
