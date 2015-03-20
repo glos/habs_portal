@@ -16,7 +16,7 @@
 }
 
 .stations-row2 {
-  height: calc(100% - 225px); // not sure why this # works
+  height: calc(100% - 155px);
 }
 
 #metadata-thumb {
