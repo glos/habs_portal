@@ -10,20 +10,26 @@
  */
 var TOCView = Backbone.View.extend({
   subviews : [],
-  categoryCollection: null,
-  stationCollection: null,
+  parentCollection: null,
+  childCollection: null,
 
   initialize: function(options) {
-    if (options && options.categoryCollection) {
-      this.categoryCollection = options.categoryCollection
+    if (options && options.parentCollection) {
+      this.parentCollection = options.parentCollection
     } else {
-      this.categoryCollection = null;
+      this.parentCollection = null;
     }
-    if (options && options.stationCollection) {
-      this.stationCollection = options.stationCollection
+    if (options && options.childCollection) {
+      this.childCollection = options.childCollection
     } else {
-      this.stationCollection = null;
+      this.childCollection = null;
     }
+    if (options && options.parentChildAssociation) {
+      this.parentChildAssociation = options.parentChildAssociation
+    } else {
+      this.parentChildAssociation = true;
+    }
+    
     console.log("TOC View initialized");
     this.initialRender();
   },
@@ -43,14 +49,15 @@ var TOCView = Backbone.View.extend({
   render: function() {
     var self = this;
     this.$el.html(this.template());
-    this.categoryCollection.each(function(category) {
-      var relevantCollection = new StationCollection();
-      var relevantStations = self.stationCollection.filter(function(item) {
-        return _.indexOf(item.get('categories'),category.get('id')) >= 0;
+    this.parentCollection.each(function(parent) {
+      // create an empty collection based on an empty child
+      var relevantCollection = new Backbone.Collection(self.childCollection.filter(false));
+      var relevantChildren = self.childCollection.filter(function(item) {
+        return self.parentChildAssociation(parent,item);
       });
-      relevantCollection.reset(relevantStations);
-      var subview = new CategoryItemView({
-        model: category,
+      relevantCollection.reset(relevantChildren);
+      var subview = new TOCParentItemView({
+        model: parent,
         collection: relevantCollection
       });
       self.add(subview);

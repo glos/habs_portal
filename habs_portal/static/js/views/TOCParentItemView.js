@@ -1,4 +1,4 @@
-var CategoryItemView = Backbone.View.extend({
+var TOCParentItemView = Backbone.View.extend({
   className: "panel panel-default",
   subviews: [],
   add: function(subview) {
@@ -9,25 +9,25 @@ var CategoryItemView = Backbone.View.extend({
   collapse: function() {
     this.$el.find('.collapse').collapse('toggle');
   },
-  template: JST['habs_portal/static/js/partials/CategoryItem.html'],
+  template: JST['habs_portal/static/js/partials/TOCParentItem.html'],
  
   render: function() {
     var self = this;
     this.$el.html(this.template({model: this.model, collectionLength: this.collection.length}));
     this.collection.each(function(model) {
-      var subview = new StationItemView({
+      var subview = new TOCChildItemView({
         model: model
       });
       self.add(subview);
     });
   },
 
-  onCategorySelect: function(e) {
-    console.log('onCategorySelect: ' + this.model.get('name'));
+  onTOCParentSelect: function(e) {
+    console.log('onTOCParentSelect: ' + this.model.get('name'));
     this.collapse();
   },
 
   events: {
-    'click' : 'onCategorySelect' 
+    'click' : 'onTOCParentSelect' 
   }
 });

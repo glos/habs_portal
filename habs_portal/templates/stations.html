@@ -95,8 +95,11 @@ _.extend(App.prototype, Backbone.Events, {
 
     this.views.tocView = new TOCView({
       el: $('#toc'),
-      categoryCollection: this.collections.categoriesStationsOnly,
-      stationCollection: this.collections.stations,
+      parentCollection: this.collections.categoriesStationsOnly,
+      childCollection: this.collections.stations,
+      parentChildAssociation: function(parent,child) {
+        return _.indexOf(child.get('categories'),parent.get('id')) >= 0
+      }
     });
 
     this.views.mapView = new StationMapView({
@@ -131,8 +134,9 @@ _.extend(App.prototype, Backbone.Events, {
       this.views.stationMetadataView.render();
     });
 
-    /* stationItemView:onStationSelect */
-    this.listenTo(this, 'stationItemView:onStationSelect', function(model) {
+    /* tocChildItemView:onTOCChildSelect */
+    this.listenTo(this, 'tocChildItemView:onTOCChildSelect', function(model) {
+      // the child in this case is a station
       this.views.mapView.highlightStation(model);
       self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : model.get('id')}));
     });
