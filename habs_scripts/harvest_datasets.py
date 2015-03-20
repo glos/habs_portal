@@ -8,6 +8,7 @@ Harvesting scripts for harvesting the datasets from TDS
 from thredds_crawler.crawl import Crawl
 from netCDF4 import Dataset
 from flask import current_app as app
+import codecs
 import json
 
 def harvest(json_file):
@@ -44,12 +45,37 @@ def harvest(json_file):
             'time'
         )
         for varname in nc.variables:
+            nc_var = nc.variables[varname]
             if varname in ignore_these:
                 continue
-            record['variables'].append(varname)
-
+            variable_record = _build_var_record(varname, nc_var)
+            record['variables'].append(variable_record)
         records.append(record)
 
-    with open(json_file, 'w') as f:
+    with codecs.open(json_file, 'w', encoding='utf-8') as f:
         f.write(json.dumps({'datasets':records, 'length':len(records)}))
+
+def _build_var_record(varname, var):
+    '''
+    Returns a dictionary with the standard variable attributes
+    '''
+    include_attrs = (
+        'standard_name',
+        'units',
+        'short_name',
+        'long_name'
+    )
+
+    record = {
+        'name' : varname
+    }
+    for attr in include_attrs:
+        if hasattr(var, attr):
+            record[attr] = getattr(var, attr)
+        else:
+            record[attr] = None
+    return record
+
+
+
 

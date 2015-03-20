@@ -52,3 +52,11 @@ th {
   z-index: 0;
   border-radius: 4px;
 }
+
+.panel-heading .institution {
+  float: right;
+}
+
+.panel-heading h2 {
+  font-size: 18px;
+}
