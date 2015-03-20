@@ -22,3 +22,7 @@
 #timeseries-container {
   height: 370px;
 }
+
+#data-view td {
+  text-align: center;
+}
