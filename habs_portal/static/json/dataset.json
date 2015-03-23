@@ -1,1 +1,83 @@
-{"length": 6, "datasets": [{"variables": ["turbidity"], "category_id": "ysi_turbidity", "station_id": "tollsps"}, {"variables": ["chlorophyll"], "category_id": "ysi_chlorophyll", "station_id": "tollsps"}, {"variables": ["blue_green_algae"], "category_id": "ysi_blue_green_algae", "station_id": "tollsps"}, {"variables": ["water_conductivity"], "category_id": "water_conductivity", "station_id": "tollsps"}, {"variables": ["water_temperature"], "category_id": "sea_surface_water_temperature", "station_id": "tollsps"}, {"variables": ["ph"], "category_id": "ph", "station_id": "tollsps"}]}
+{
+    "datasets": [
+        {
+            "category_id": "ysi_turbidity",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "YSI Turbidity",
+                    "name": "turbidity",
+                    "short_name": null,
+                    "standard_name": "ysi_turbidity",
+                    "units": "ntu"
+                }
+            ]
+        },
+        {
+            "category_id": "ysi_chlorophyll",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "YSI Chlorophyll",
+                    "name": "chlorophyll",
+                    "short_name": null,
+                    "standard_name": "ysi_chlorophyll",
+                    "units": "rfu"
+                }
+            ]
+        },
+        {
+            "category_id": "ysi_blue_green_algae",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "YSI Blue Green Algae",
+                    "name": "blue_green_algae",
+                    "short_name": null,
+                    "standard_name": "ysi_blue_green_algae",
+                    "units": "rfu"
+                }
+            ]
+        },
+        {
+            "category_id": "water_conductivity",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "Water Conductivity",
+                    "name": "water_conductivity",
+                    "short_name": null,
+                    "standard_name": "water_conductivity",
+                    "units": "uS/cm"
+                }
+            ]
+        },
+        {
+            "category_id": "sea_surface_water_temperature",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "sea water temperature at surface",
+                    "name": "water_temperature",
+                    "short_name": null,
+                    "standard_name": "sea_water_temperature",
+                    "units": "degree_Celsius"
+                }
+            ]
+        },
+        {
+            "category_id": "ph",
+            "station_id": "tollsps",
+            "variables": [
+                {
+                    "long_name": "PH",
+                    "name": "ph",
+                    "short_name": null,
+                    "standard_name": "ph",
+                    "units": ""
+                }
+            ]
+        }
+    ],
+    "length": 6
+}

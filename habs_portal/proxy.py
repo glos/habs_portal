@@ -10,6 +10,7 @@ from flask import current_app as app
 from flask import jsonify, request
 import requests
 import json
+import codecs
 
 @api.route('/api/test', methods=['GET'])
 def get_tests():
@@ -35,7 +36,7 @@ def _get_datasets():
     '''
     Opens the JSON file for the datasets and returns the contents.
     '''
-    with open('habs_portal/static/json/dataset.json', 'r') as f:
+    with codecs.open('habs_portal/static/json/dataset.json', 'r', encoding='utf-8') as f:
         records = json.loads(f.read())
     return records
 

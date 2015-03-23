@@ -67,3 +67,12 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.institution {
+  margin-top: -8px;
+}
+
+.institution img {
+  width: 40px;
+  height: 40px;
+}
