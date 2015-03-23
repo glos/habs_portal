@@ -157,10 +157,22 @@ _.extend(App.prototype, Backbone.Events, {
       console.log('plotCacnelButtonsView:onButtonClick: ' + options.dataset);
     });
 
+    this.listenTo(this, 'windowView:resize', function(model) {
+      console.log('Window resized to ' + model.get('width') + ' x ' + model.get('height'));
+    });
+
     /* Fetching */
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
     this.collections.institutions.fetch({reset: true});
+
+    /*
+      Special case to listen for window resize.  The view is listening directly to its model
+      rather than allowing the app to broker that exchange.
+    */
+    _.extend(window, Backbone.Events);
+    window.onresize = function() { window.trigger('resize') };
+    new WindowView({model: new WindowModel()});
   }
 });
 

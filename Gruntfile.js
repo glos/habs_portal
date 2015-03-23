@@ -95,6 +95,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/models/StationModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
             'habs_portal/static/js/models/InstitutionModel.js',
+            'habs_portal/static/js/models/WindowModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/StationView.js',
@@ -107,7 +108,8 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/StationMetadataView.js',
             'habs_portal/static/js/views/SVGView.js',
             'habs_portal/static/js/views/TimeseriesView.js',
-            'habs_portal/static/js/views/PopupView.js'
+            'habs_portal/static/js/views/PopupView.js',
+            'habs_portal/static/js/views/WindowView.js'
           ],
           'habs_portal/static/js/compiled/plotting.js' : [
             // Libs
@@ -121,6 +123,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/models/StationModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
             'habs_portal/static/js/models/InstitutionModel.js',
+            'habs_portal/static/js/models/WindowModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/StationView.js',
@@ -130,7 +133,8 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/TOCChildItemView.js',
             'habs_portal/static/js/views/TimeseriesView.js',
             'habs_portal/static/js/views/PlotCancelButtonsView.js',
-            'habs_portal/static/js/views/SVGView.js'
+            'habs_portal/static/js/views/SVGView.js',
+            'habs_portal/static/js/views/WindowView.js'
           ]
         }
       },
