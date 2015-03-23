@@ -7,6 +7,7 @@
  */
 var StationMetadataView = Backbone.View.extend({
   initialize: function(options) {
+    _.bindAll(this, "onVariableSelect");
     if(options && options.datasets) {
       this.datasets = options.datasets;
     } else {
@@ -29,32 +30,36 @@ var StationMetadataView = Backbone.View.extend({
   render: function() {
     var self = this;
     var variables = [];
+    
     // Build a list of variables using the dataset info
     this.datasets.each(function(dataset) {
-      console.log(dataset.get('station_id'));
+      // If this dataset belongs to the selected station
       if(dataset.get('station_id') == self.model.get('id')) {
-        _.each(dataset.get('variables'), function(variable) {
+        _.each(dataset.get('variables'), function(variable, idx) {
           var varName = variable.long_name + ' (' + variable.units + ')';
-          variables.push(varName);
+          // An object to store information about the variable and where it comes from
+          var varPack = {
+            dataset: dataset,
+            variable: variable,
+            varName: varName
+          };
+          variables.push(varPack);
         });
       }
     });
-    console.log(this.institutions.pluck('id'));
-    console.log(this.model.get('institution'));
     var institution = this.institutions.get(this.model.get('institution'));
     if(!institution) {
       institution = new InstitutionModel();
-      console.log("no institution found");
     }
     this.$el.html(this.template({model: this.model, variables: variables, institution: institution}));
+    this.$el.find('#variable-select option').each(function(idx, ele) {
+      $(ele).data('variable', variables[idx]);
+    });
   },
 
   onVariableSelect: function(e) {
-    // FIXME.  You may not need to pass along collection.first() here.
-    // If you have picked a variable, you should have picked a station 1st.
     app.trigger('stationMetdataView:onVariableSelect',
-      this.stations.first(),
-      $(e.target).find(':selected').val()
+      this.$el.find('#variable-select option:selected').data('variable')
     );
   },
 

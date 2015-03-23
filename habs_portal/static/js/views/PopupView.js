@@ -23,12 +23,12 @@ var PopupView = Backbone.View.extend({
       url: '/plotting/getplot?' + $.param({
         plottype: 'stats',
         datacat: 'lakes',
-        datatype: 'temperature',
+        datatype: 'sea_surface_water_temperature',
         id: 'tollsps',
-        variables: 'temperature',
+        variables: 'water_temperature',
         step: 1,
-        startdate: '2015-02-01T00:00:00Z',
-        enddate: '2015-03-01T00:00:00Z',
+        startdate: '2015-03-18T00:00:00Z',
+        enddate: '2015-03-20T00:00:00Z',
         width: 800,
         height: 300,
         format: 'svg' // REALLY IMPORTANT!

@@ -90,6 +90,7 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
+            // Internal Libs
             'habs_portal/static/js/common/urlParse.js',
             // Models
             'habs_portal/static/js/models/CategoryModel.js',
@@ -97,6 +98,7 @@ module.exports = function(grunt) {
             'habs_portal/static/js/models/InstitutionModel.js',
             'habs_portal/static/js/models/WindowModel.js',
             'habs_portal/static/js/models/StationModel.js',
+            'habs_portal/static/js/models/TimeseriesModel.js',
             // Views
             'habs_portal/static/js/views/BannerView.js',
             'habs_portal/static/js/views/StationView.js',

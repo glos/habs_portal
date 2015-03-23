@@ -14,9 +14,9 @@
         <div class="col-md-7">
           <% if (variables.length > 0) { %>
             Available Parameters<br>
-            <select size=9  class="form-control">
-              <% _.each(variables, function(variable) { %>
-                <option><%= variable %></option>
+            <select size=9  class="form-control" id="variable-select">
+              <% _.each(variables, function(variable, i) { %>
+                <option data-id="<%=i%>"><%= variable.varName %></option>
               <% }); %>
             </select>
           <% } %>
