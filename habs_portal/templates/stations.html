@@ -69,7 +69,8 @@ _.extend(App.prototype, Backbone.Events, {
     timeseriesView: null
   },
   models: {
-    selectedStation: new StationModel() // just an empty instance
+    selectedStation: new StationModel(), // just an empty instance
+    timeseries: new TimeseriesModel()
   },
   collections: {
     stations: null,
@@ -122,12 +123,16 @@ _.extend(App.prototype, Backbone.Events, {
       institutions: this.collections.institutions
     });
 
+    // Depends on datasets.reset for a render
     this.views.timeseriesView = new TimeseriesView({
       el: $('#timeseries-view'),
-    }).render();
+      model: this.models.timeseries,
+      datasets: this.collections.datasets
+    });
 
     /* Event Listeners */
 
+    /* -------------------- Collection Listeners -------------------- */
     /* stations:reset */
     this.listenTo(this.collections.stations, 'reset', function(collection) {
       self.collections.categoriesStationsOnly.reset(self.collections.categories.where({name : 'Stations'}));
@@ -135,6 +140,25 @@ _.extend(App.prototype, Backbone.Events, {
       var models = collection.models;
       self.collections.activeStations.reset(models);
     });
+
+    this.listenTo(this.collections.datasets, 'reset', function(collection) {
+        var dataset = collection.at(0);
+        self.models.timeseries.set({
+          dataset: dataset,
+          variable: dataset.get('variables')[0],
+          start: new Date(dataset.get('attributes').time_coverage_start + 'Z'),
+          end: new Date(dataset.get('attributes').time_coverage_end + 'Z')
+        });
+        self.views.timeseriesView.render();
+    })
+    
+    /* -------------------- Model Listeners -------------------- */
+
+    this.listenTo(this.models.timeseries, 'change', function(model) {
+     self.views.timeseriesView.render();
+    });
+
+    /* -------------------- View Listeners -------------------- */
 
     /* tocChildItemView:onTOCChildSelect */
     this.listenTo(this, 'tocChildItemView:onTOCChildSelect', function(model) {
@@ -176,21 +200,26 @@ _.extend(App.prototype, Backbone.Events, {
     });
 
     /* stationMetdataView:onVariableSelect */
-    this.listenTo(this, 'stationMetdataView:onVariableSelect', function(model, variable) {
-      // FIXME.  You may not need the model here.
-      // If you have picked a variable, you should have picked a station 1st.
-      console.log('stationMetdataView:onVariableSelect: ' + model.get('id') + ' ' + variable);
+    this.listenTo(this, 'stationMetdataView:onVariableSelect', function(variable) {
+        self.models.timeseries.set({
+          dataset: variable.dataset,
+          variable: variable.variable
+        });
     });
 
     /* timeseriesView:onRefreshClick */
     this.listenTo(this, 'timeseriesView:onRefreshClick', function(model, options) {
-      // FIXME.  No model here yet.
-      console.log('timeseriesView:onRefreshClick: from ' + options.start + ' to ' + options.end);
+      model.set({
+        start: options.start,
+        end: options.end
+      });
     });
 
     this.listenTo(this, 'windowView:resize', function(model) {
       console.log('Window resized to ' + model.get('width') + ' x ' + model.get('height'));
+      self.views.timeseriesView.render();
     });
+
 
     /* Fetching */
     var categoryFetch = this.collections.categories.fetch({reset: true});
