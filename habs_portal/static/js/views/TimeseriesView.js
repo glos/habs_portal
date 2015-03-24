@@ -13,6 +13,9 @@ var TimeseriesView = Backbone.View.extend({
     } else {
       console.error("TimeseriesView needs a collection of datasets");
     }
+    if(! this.model) {
+      console.error("TimeseriesView needs a TimeseriesModel defined in the model attribute");
+    }
     this.initialRender();
   },
 

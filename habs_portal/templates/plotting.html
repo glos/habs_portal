@@ -90,10 +90,12 @@ _.extend(App.prototype, Backbone.Events, {
     plotCancelButtonsView: null
   },
   models: {
+    timeseriesModel: new TimeseriesModel()
   },
   collections: {
     stations: null,
-    activeStations: null
+    activeStations: null,
+    datasets: null
   },
   start: function() {
     var self = this;
@@ -103,6 +105,7 @@ _.extend(App.prototype, Backbone.Events, {
     this.collections.categoriesNoStations = new CategoryCollection();
     this.collections.institutions = new InstitutionCollection();
     this.collections.stations = new StationCollection();
+    this.collections.datasets = new DatasetCollection();
 
     /* Views */
     this.views.bannerView = new BannerView({
@@ -123,9 +126,12 @@ _.extend(App.prototype, Backbone.Events, {
       }
     });
 
+    // This view gets rendered when datasets are fetched
     this.views.timeseriesView = new TimeseriesView({
       el: $('#timeseries-view'),
-    }).render();
+      model: this.models.timeseriesModel,
+      datasets: this.collections.datasets
+    });
 
     this.views.plotCancelButtonsView = new PlotCancelButtonsView({
       el: $('#plot-cancel-buttons-view'),
@@ -161,10 +167,23 @@ _.extend(App.prototype, Backbone.Events, {
       console.log('Window resized to ' + model.get('width') + ' x ' + model.get('height'));
     });
 
+    this.listenTo(this.collections.datasets, 'reset', function(collection) {
+        // Set the inital view to the first dataset and variable available, no one likes to stare at nothing
+        var dataset = collection.at(0);
+        self.models.timeseriesModel.set({
+          dataset: dataset,
+          variable: dataset.get('variables')[0],
+          start: new Date(dataset.get('attributes').time_coverage_start + 'Z'),
+          end: new Date(dataset.get('attributes').time_coverage_end + 'Z')
+        });
+        self.views.timeseriesView.render();
+    })
+
     /* Fetching */
     this.collections.categories.fetch({reset: true});
     this.collections.stations.fetch({reset: true});
     this.collections.institutions.fetch({reset: true});
+    this.collections.datasets.fetch({reset: true});
 
     /*
       Special case to listen for window resize.  The view is listening directly to its model
