@@ -21,7 +21,7 @@
 }
 
 .stations-row2 {
-  height: calc(100% - 225px); // not sure why this # works
+  height: calc(100% - 155px); // not sure why this # works
 }
 
 #timeseries-view {
@@ -57,6 +57,16 @@ th {
   float: right;
 }
 
-.panel-heading h2 {
-  font-size: 18px;
+.station-title {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.watermark {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 245px;
+  opacity: 0.1;
+  filter: alpha(opacity=10); /* For IE8 and earlier */
 }
