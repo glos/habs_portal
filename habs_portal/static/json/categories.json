@@ -2,31 +2,38 @@
   "categories" : [
     {
       "id": "stations",
-      "name":"Stations"
+      "name":"Stations",
+      "description" : "All stations monitored within the GLOS HABS Monitoring Network"
     },
     {
       "id": "sea_surface_water_temperature",
-      "name":"Surface Water Temperature"
+      "name":"Surface Water Temperature",
+      "description" : "A measure of warmth or coldness of the lake"
     },
     {
       "id":"water_conductivity",
-      "name":"Specific Conductivity"
+      "name":"Specific Conductivity",
+      "description" : "A value measuring how electricity moves through the water"
     },
     {
       "id":"ysi_turbidity",
-      "name":"Turbidity"
+      "name":"Turbidity",
+      "description" : "A cloudy condition in water due to suspended silt or organic matter"
     },
     {
       "id":"ph",
-      "name":"pH"
+      "name":"pH",
+      "description" : "A measure of hte acidity or alkalinity of the water."
     },
     {
       "id":"ysi_chlorophyll",
-      "name":"Chlorophyll"
+      "name":"Chlorophyll",
+      "description" : "A chemical mixture or compound that plants use for photosynthesis and gives them their green color"
     },
     {
       "id":"ysi_blue_green_algae",
-      "name":"Blue Green Algae"
+      "name":"Blue Green Algae",
+      "description" : "Photosynthetic organism resembling phototrophic bacteria"
     }
   ]
 }
