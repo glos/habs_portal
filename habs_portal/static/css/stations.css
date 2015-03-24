@@ -21,7 +21,7 @@
 }
 
 .stations-row2 {
-  height: calc(100% - 225px); // not sure why this # works
+  height: calc(100% - 155px); // not sure why this # works
 }
 
 #timeseries-view {
