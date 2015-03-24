@@ -1,16 +1,14 @@
 <div class="panel panel-default full-height">
   <div class="panel-heading">
-    <h2>
-      <%= model.get('name') %>
-      <div class="institution">
-        <%= institution.get('name') %>
-        <img alt="<%= institution.get('name') %>" src="<%= institution.get('icon') %>"></img>
-      </div> <!-- /.pull-right .institution -->
-    </h2>
+    <span class="station-title"><%= model.get('name') %>, <%= institution.get('name') %></span><br>
+    <%= model.get('lat') %>&deg; N, <%= model.get('lon') %>&deg; E
   </div>
   <div class="panel-body">
     <% var categories = _.filter(model.get('categories'),function(o){return o != 'stations'}).sort(); %>
       <div class="row">
+        <div class="col-md-5">
+          <img id="metadata-thumb" alt="buoy" src="http://upload.wikimedia.org/wikipedia/commons/0/0c/NOAA-NDBC-discus-buoy.jpg" />
+        </div>
         <div class="col-md-7">
           <% if (variables.length > 0) { %>
             Available Parameters<br>
@@ -21,9 +19,8 @@
             </select>
           <% } %>
         </div>
-        <div class="col-md-5">
-          <img id="metadata-thumb" alt="buoy" src="http://upload.wikimedia.org/wikipedia/commons/0/0c/NOAA-NDBC-discus-buoy.jpg" />
-        </div>
       </div>
   </div>
+  <!-- <%= institution.get('icon') %>" -->
+  <img class="watermark" src="/img/examples/noaa_logo.png">
 </div>
