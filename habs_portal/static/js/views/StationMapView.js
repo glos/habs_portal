@@ -9,7 +9,7 @@
 
 var StationMapView = MapView.extend({
   /*
-   * Add a station model to the map by creating a circle for it. Also add it to
+   * Add a station model to the map by creating a marker for it. Also add it to
    * a list of features so we can bind to it and play with the events.
    */
   addStation: function(model, options) {
@@ -17,11 +17,8 @@ var StationMapView = MapView.extend({
     var opts = {
       lat: model.get('lat'),
       lon: model.get('lon'),
-      color: '#A1865B',
-      fillColor: '#EED8B6',
       selected: false,
-      highlighted: false,
-      radius: 10
+      highlighted: false
     };
     _.extend(opts, options);
 
@@ -31,10 +28,10 @@ var StationMapView = MapView.extend({
       selected: opts.selected,
       highlighted: opts.highlighted,
       popupView: null,
-      circle: this.drawCircle(opts)
+      marker: this.drawMarker(opts)
     };
     this.stations.push(feature);
-    feature.circle.on('click', function(event) {
+    feature.marker.on('click', function(event) {
       self.trigger('stationClick', feature);
     });
     if(opts.selected) {
@@ -55,9 +52,9 @@ var StationMapView = MapView.extend({
       return station.id == model.id
     });
     feature.popupView = view;
-    var popup = feature.circle.bindPopup(view.el, {maxWidth:900});
+    var popup = feature.marker.bindPopup(view.el, {maxWidth:900});
     popup.openPopup();
-    //feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
+    //feature.marker.bindPopup(view.el, {maxWidth: 900}).openPopup();
   },
   /*
    * Removes a station from the map
@@ -73,7 +70,7 @@ var StationMapView = MapView.extend({
 
     // If it's found prune it from the this.stations list and remove it from the map
     if(feature) {
-      this.map.removeLayer(feature.circle);
+      this.map.removeLayer(feature.marker);
       this.stations = _.without(this.stations, feature);
     }
   },
@@ -114,14 +111,14 @@ var StationMapView = MapView.extend({
     var self = this;
     var selectedFeatures = _.where(this.stations, {selected: true});
     _.each(selectedFeatures, function(feature) {
-      self.map.removeLayer(feature.circle);
+      self.map.removeLayer(feature.marker);
       self.stations.pop(feature);
 
       self.addStation(feature.model);
     });
     var selectedFeatures = _.where(this.stations, {highlighted: true});
     _.each(selectedFeatures, function(feature) {
-      self.map.removeLayer(feature.circle);
+      self.map.removeLayer(feature.marker);
       self.stations.pop(feature);
 
       self.addStation(feature.model);

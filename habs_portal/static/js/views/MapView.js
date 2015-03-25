@@ -120,12 +120,9 @@ var MapView = Backbone.View.extend({
    * options: 
    *   lat,
    *   lon,
-   *   radius, (pixels)
-   *   color,
-   *   fillColor,
-   *   fillOpacity,
+   *   highlighted
    */
-  drawCircle: function(options) {
+  drawMarker: function(options) {
     if(!(options && options.lat && options.lon)) {
       console.error("lat and lon are required options");
       return;
@@ -133,19 +130,19 @@ var MapView = Backbone.View.extend({
 
     var lat = options.lat;
     var lon = options.lon;
-    var radius = options.radius || 500;
 
     var opts = {
-      radius: 500,
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5
     }
     _.extend(opts, options);
 
-    var circle = L.circleMarker([lat, lon], opts);
-    circle.addTo(this.map);
-    return circle;
+    var marker = L.marker([lat, lon], {icon: L.AwesomeMarkers.icon({
+      prefix: 'fa',
+      icon: opts.highlighted || opts.selected ? 'fa-circle' : 'fa-circle-o',
+      markerColor: opts.highlighted || opts.selected ? 'red' : 'darkblue'
+    })});
+  
+    marker.addTo(this.map);
+    return marker;
   },
   redraw: function() {
     this.map.invalidateSize();
