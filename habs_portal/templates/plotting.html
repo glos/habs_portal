@@ -157,10 +157,10 @@ _.extend(App.prototype, Backbone.Events, {
       console.log('timeseriesView:onRefreshClick: from ' + options.start + ' to ' + options.end);
     });
 
-    /* plotCacnelButtonsView:onButtonClick */
-    this.listenTo(this, 'plotCacnelButtonsView:onButtonClick', function(model, options) {
+    /* plotCancelButtonsView:onButtonClick */
+    this.listenTo(this, 'plotCancelButtonsView:onButtonClick', function(model, options) {
       // FIXME.  No model here yet.
-      console.log('plotCacnelButtonsView:onButtonClick: ' + options.dataset);
+      console.log('plotCancelButtonsView:onButtonClick: ' + options.dataset);
     });
 
     this.listenTo(this, 'windowView:resize', function(model) {
