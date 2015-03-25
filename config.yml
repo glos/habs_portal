@@ -9,4 +9,4 @@ COMMON: &common
     DEBUG: True
     PLOT_SERVICE: null
     THREDDS_SERVICE: 'http://tds.glos.us/thredds/catalog/glos/habs/'
-
+    PLOT_SERVICE: "http://glos.staging.asascience.com:3001"
