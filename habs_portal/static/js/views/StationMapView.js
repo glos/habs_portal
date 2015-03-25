@@ -18,7 +18,8 @@ var StationMapView = MapView.extend({
       lat: model.get('lat'),
       lon: model.get('lon'),
       selected: false,
-      highlighted: false
+      highlighted: false,
+      tooltipHtml: model.get('name')
     };
     _.extend(opts, options);
 

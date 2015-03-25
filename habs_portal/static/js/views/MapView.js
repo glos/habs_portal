@@ -132,6 +132,7 @@ var MapView = Backbone.View.extend({
     var lon = options.lon;
 
     var opts = {
+      tooltipHtml: ''
     }
     _.extend(opts, options);
 
@@ -142,6 +143,14 @@ var MapView = Backbone.View.extend({
     })});
   
     marker.addTo(this.map);
+
+    L.tooltip({
+      target: marker,
+      map: this.map,
+      html: opts.tooltipHtml,
+      padding: '4px 8px'
+    });
+
     return marker;
   },
   redraw: function() {

@@ -67,6 +67,8 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/bootstrap/dist/js/bootstrap.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
+            // Internal Libs
+            'habs_portal/static/js/common/leaflet.tooltip.js',
             // Models
             'habs_portal/static/js/models/DatasetModel.js',
             'habs_portal/static/js/models/CategoryModel.js',
@@ -93,6 +95,7 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/backbone/backbone.js',
             // Internal Libs
             'habs_portal/static/js/common/urlParse.js',
+            'habs_portal/static/js/common/leaflet.tooltip.js',
             // Models
             'habs_portal/static/js/models/CategoryModel.js',
             'habs_portal/static/js/models/DatasetModel.js',
@@ -153,13 +156,15 @@ module.exports = function(grunt) {
           'habs_portal/static/css/compiled/map.css' : [
             'habs_portal/static/css/common.css',
             'habs_portal/static/css/toc.css',
-            'habs_portal/static/css/popup.css'
+            'habs_portal/static/css/popup.css',
+            'habs_portal/static/css/leaflet.tooltip.css'
           ],
           'habs_portal/static/css/compiled/stations.css' : [
             'habs_portal/static/css/common.css',
             'habs_portal/static/css/toc.css',
             'habs_portal/static/css/timeseries.css',
             'habs_portal/static/css/stations.css',
+            'habs_portal/static/css/leaflet.tooltip.css'
           ],
           'habs_portal/static/css/compiled/plotting.css' : [
             'habs_portal/static/css/common.css',
