@@ -192,7 +192,8 @@ _.extend(App.prototype, Backbone.Events, {
     /* mapView:stationClick */
     this.listenTo(this.views.mapView, 'stationClick', function(feature) {
       this.views.mapView.highlightStation(feature.model);
-      self.collections.activeStationsSelected.reset(self.collections.activeStations.where({id : feature.model.get('id')}));
+      self.views.stationMetadataView.model = feature.model;
+      self.views.stationMetadataView.render();
     });
 
     /* mapView:mapClick */
