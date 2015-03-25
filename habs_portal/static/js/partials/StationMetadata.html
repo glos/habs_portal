@@ -1,4 +1,5 @@
 <div class="panel panel-default full-height">
+  <img class="watermark" src="<%= institution.get('icon') %>">
   <div class="panel-heading">
     <span class="station-title"><%= model.get('name') %>, <%= institution.get('name') %></span><br>
     <%= model.get('lat') %>&deg; N, <%= model.get('lon') %>&deg; E
@@ -12,7 +13,7 @@
         <div class="col-md-7">
           <% if (variables.length > 0) { %>
             Available Parameters<br>
-            <select size=9  class="form-control" id="variable-select">
+            <select size=9  class="form-control scrollable-content" id="variable-select">
               <% _.each(variables, function(variable, i) { %>
                 <option data-id="<%=i%>"><%= variable.varName %></option>
               <% }); %>
@@ -21,5 +22,4 @@
         </div>
       </div>
   </div>
-  <img class="watermark" src="<%= institution.get('icon') %>">
 </div>

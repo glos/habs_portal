@@ -62,11 +62,16 @@ th {
   font-size: larger;
 }
 
+select[multiple], select[size] {
+  background: transparent;
+  overflow-y: auto;
+}
+
 .watermark {
   position: absolute;
   top: 30px;
   right: 30px;
   height: 245px;
-  opacity: 0.1;
+  opacity: 0.08;
   filter: alpha(opacity=10); /* For IE8 and earlier */
 }

@@ -1,10 +1,10 @@
 <h2>
-  <%= model.get('name') %>
-  <div class="pull-right institution">
-    <%= institution.get('name') %>
-    <img alt="<%= institution.get('name') %>" src="<%= institution.get('icon') %>"></img>
+  <%= model.get('name') %>, <%= institution.get('name') %>
+  <div class="pull-right station-button">
+    <button type="button" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-new-window"></span> Station page
   </div>
 </h2>
 <hr class="fade-style">
 <div class="plot-example">
 </div>
+<img class="watermark" src="<%= institution.get('icon') %>">

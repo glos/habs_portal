@@ -9,7 +9,7 @@
 
 var StationMapView = MapView.extend({
   /*
-   * Add a station model to the map by creating a circle for it. Also add it to
+   * Add a station model to the map by creating a marker for it. Also add it to
    * a list of features so we can bind to it and play with the events.
    */
   addStation: function(model, options) {
@@ -17,11 +17,8 @@ var StationMapView = MapView.extend({
     var opts = {
       lat: model.get('lat'),
       lon: model.get('lon'),
-      color: '#A1865B',
-      fillColor: '#EED8B6',
       selected: false,
-      highlighted: false,
-      radius: 10
+      highlighted: false
     };
     _.extend(opts, options);
 
@@ -31,10 +28,10 @@ var StationMapView = MapView.extend({
       selected: opts.selected,
       highlighted: opts.highlighted,
       popupView: null,
-      circle: this.drawCircle(opts)
+      marker: this.drawMarker(opts)
     };
     this.stations.push(feature);
-    feature.circle.on('click', function(event) {
+    feature.marker.on('click', function(event) {
       self.trigger('stationClick', feature);
     });
     if(opts.selected) {
@@ -55,9 +52,9 @@ var StationMapView = MapView.extend({
       return station.id == model.id
     });
     feature.popupView = view;
-    var popup = feature.circle.bindPopup(view.el, {maxWidth:900});
+    var popup = feature.marker.bindPopup(view.el, {maxWidth:900});
     popup.openPopup();
-    //feature.circle.bindPopup(view.el, {maxWidth: 900}).openPopup();
+    //feature.marker.bindPopup(view.el, {maxWidth: 900}).openPopup();
   },
   /*
    * Removes a station from the map
@@ -73,55 +70,51 @@ var StationMapView = MapView.extend({
 
     // If it's found prune it from the this.stations list and remove it from the map
     if(feature) {
-      this.map.removeLayer(feature.circle);
+      this.map.removeLayer(feature.marker);
       this.stations = _.without(this.stations, feature);
     }
   },
   /*
-   * Selects a specific station by changing its color to red and rendering a
+   * Selects a specific station by changing its marker and rendering a
    * popup view at the stations center. The map is automatically panned or
    * adjusted based on the leaflet internals for the popups.
    */
   selectStation: function(model) {
     this.clearStation(model);
-    // Add it back in with the color changes
+    // Add it back in as selected.
     this.addStation(model, {
-      color: '#F26D64',
-      fillColor: '#AD4E47',
       selected: true
     });
   },
   /*
-   * Highlights a specific station by changing the color to red and centering
+   * Highlights a specific station by changing the marker and centering
    * the map on the selected station.
    */
   highlightStation: function(model) {
     this.clearStation(model);
 
-    // Add it back in with the color changes
+    // Add it back in as highlighted.
     this.addStation(model, {
-      color: '#F26D64',
-      fillColor: '#AD4E47',
       highlighted: true
     });
     this.map.panTo({lat: model.get('lat'), lon: model.get('lon')});
   },
   /*
    * Removes any selected features from the map and re-adds them back without
-   * the color changes.
+   * the marker changes.
    */
   clearSelection: function() {
     var self = this;
     var selectedFeatures = _.where(this.stations, {selected: true});
     _.each(selectedFeatures, function(feature) {
-      self.map.removeLayer(feature.circle);
+      self.map.removeLayer(feature.marker);
       self.stations.pop(feature);
 
       self.addStation(feature.model);
     });
     var selectedFeatures = _.where(this.stations, {highlighted: true});
     _.each(selectedFeatures, function(feature) {
-      self.map.removeLayer(feature.circle);
+      self.map.removeLayer(feature.marker);
       self.stations.pop(feature);
 
       self.addStation(feature.model);
