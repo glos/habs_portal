@@ -33,7 +33,8 @@ module.exports = function(grunt) {
             "habs_portal/static/js/partials/TOCParentItem.html",
             "habs_portal/static/js/partials/TOCChildItem.html",
             "habs_portal/static/js/partials/Timeseries.html",
-            "habs_portal/static/js/partials/PlotCancelButtons.html"
+            "habs_portal/static/js/partials/PlotCancelButtons.html",
+            "habs_portal/static/js/partials/Table.html"
           ]
         }
       }
@@ -122,6 +123,7 @@ module.exports = function(grunt) {
             'habs_portal/static/lib/bootstrap3-datetimepicker/src/js/bootstrap-datetimepicker.js',
             'habs_portal/static/lib/underscore/underscore.js',
             'habs_portal/static/lib/backbone/backbone.js',
+            'habs_portal/static/lib/DataTables/media/js/jquery.dataTables.js',
             // Models
             'habs_portal/static/js/models/CategoryModel.js',
             'habs_portal/static/js/models/DatasetModel.js',
@@ -139,7 +141,8 @@ module.exports = function(grunt) {
             'habs_portal/static/js/views/TimeseriesView.js',
             'habs_portal/static/js/views/PlotCancelButtonsView.js',
             'habs_portal/static/js/views/SVGView.js',
-            'habs_portal/static/js/views/WindowView.js'
+            'habs_portal/static/js/views/WindowView.js',
+            'habs_portal/static/js/views/TableView.js'
           ]
         }
       },
@@ -162,7 +165,8 @@ module.exports = function(grunt) {
             'habs_portal/static/css/common.css',
             'habs_portal/static/css/toc.css',
             'habs_portal/static/css/timeseries.css',
-            'habs_portal/static/css/plotting.css'
+            'habs_portal/static/css/plotting.css',
+            'habs_portal/static/css/table.css'
           ]
         }
       }
