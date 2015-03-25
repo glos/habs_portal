@@ -75,37 +75,33 @@ var StationMapView = MapView.extend({
     }
   },
   /*
-   * Selects a specific station by changing its color to red and rendering a
+   * Selects a specific station by changing its marker and rendering a
    * popup view at the stations center. The map is automatically panned or
    * adjusted based on the leaflet internals for the popups.
    */
   selectStation: function(model) {
     this.clearStation(model);
-    // Add it back in with the color changes
+    // Add it back in as selected.
     this.addStation(model, {
-      color: '#F26D64',
-      fillColor: '#AD4E47',
       selected: true
     });
   },
   /*
-   * Highlights a specific station by changing the color to red and centering
+   * Highlights a specific station by changing the marker and centering
    * the map on the selected station.
    */
   highlightStation: function(model) {
     this.clearStation(model);
 
-    // Add it back in with the color changes
+    // Add it back in as highlighted.
     this.addStation(model, {
-      color: '#F26D64',
-      fillColor: '#AD4E47',
       highlighted: true
     });
     this.map.panTo({lat: model.get('lat'), lon: model.get('lon')});
   },
   /*
    * Removes any selected features from the map and re-adds them back without
-   * the color changes.
+   * the marker changes.
    */
   clearSelection: function() {
     var self = this;
