@@ -26,3 +26,17 @@
 .pull-right.institution {
   margin-top: -4px;
 }
+
+.station-title {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.watermark {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 245px;
+  opacity: 0.08;
+  filter: alpha(opacity=10); /* For IE8 and earlier */
+}
