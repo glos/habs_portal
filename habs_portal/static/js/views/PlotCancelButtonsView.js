@@ -24,7 +24,7 @@ var PlotCancelButtonsView = Backbone.View.extend({
   onButtonClick: function(e) {
     // FIXME.  Passing along the string is obviously not good enough.  But tis for now.
     // Oh yeah, and no model for you.
-    app.trigger('plotCacnelButtonsView:onButtonClick', this.model, {dataset: $(e.target).data('dataset')});
+    app.trigger('plotCancelButtonsView:onButtonClick', this.model, {dataset: $(e.target).data('dataset')});
   },
 
   events: {
