@@ -62,6 +62,10 @@ th {
   font-size: larger;
 }
 
+select[multiple], select[size] {
+  background: transparent;
+}
+
 .watermark {
   position: absolute;
   top: 30px;
