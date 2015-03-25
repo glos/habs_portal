@@ -64,6 +64,7 @@ th {
 
 select[multiple], select[size] {
   background: transparent;
+  overflow-y: auto;
 }
 
 .watermark {
